@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">FurnitureVehicleSystem</string>
+
+    <string name="app_name">车载控制</string>
+    <string name="app_name_en">FurnitureVehicleSystem</string>
 </resources>
