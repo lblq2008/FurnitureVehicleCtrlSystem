@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_transition"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fvcs.cn.TransitionActivity">
+    <TextView
+        android:id="@+id/tv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#0000ff"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="欢迎进入车载控制系统"/>
+</RelativeLayout>
