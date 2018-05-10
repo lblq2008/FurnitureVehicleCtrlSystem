@@ -44,8 +44,10 @@ public class AccpetBluetoothMsgThread extends Thread {
 		try {
 				is = clientSocket.getInputStream();
 				while (isRun) {
-					byte[] buffer = new byte[33];
+					byte[] buffer = new byte[16];
 					int count = is.read(buffer);
+					LogUtil.e(TAG,"count: "+ count);
+
 					Message message = Message.obtain();
 					//message.obj = byte2HexStr(buffer);
 					message.obj = new String(buffer,"UTF-8");
@@ -86,7 +88,7 @@ public class AccpetBluetoothMsgThread extends Thread {
 	
 	/**  
 	 * bytes转换成十六进制字符串  
-	 * @param byte[] b byte数组  
+	 * @param  b byte数组
 	 * @return String 每个Byte值之间空格分隔  
 	 */    
 	public static String byte2HexStr(byte[] b)    
@@ -108,7 +110,7 @@ public class AccpetBluetoothMsgThread extends Thread {
      * @param msg
      */
 	public void sendBTMsg(String msg){
-        if(outputStream == null){
+        if(outputStream == null && clientSocket != null){
             try {
                 outputStream = clientSocket.getOutputStream();
             } catch (IOException e) {

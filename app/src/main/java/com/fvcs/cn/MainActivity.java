@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import android.widget.TextView;
 
 import com.fvcs.cn.utils.AccpetBluetoothMsgThread;
 import com.fvcs.cn.utils.LogUtil;
+import com.fvcs.cn.utils.OrderUtils;
+import com.fvcs.cn.utils.PreferenceUtils;
 import com.fvcs.cn.utils.ToastUtils;
 
 import java.io.IOException;
@@ -54,28 +57,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private List<String> names = new ArrayList<String>();
     private List<String> addresses = new ArrayList<String>();
 
-    private PopupWindow pw = null ;
+    private PopupWindow pw = null ;//蓝牙扫描弹框
     private TextView tv_title = null ;
+
+    private BluetoothSocket clientSocket = null ;
+    private AccpetBluetoothMsgThread abmThread = null ;//结束蓝牙数据的线程
+
+    private OrderUtils mOrderUtils ;
 
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0://连接成功
-                    //ToastUtils.showToast(MainActivity.this,"success");
+                    //ToastUtils.showToast(MainActivity.this,"连接成功");
                     break;
                 case 1://连接失败
-                    //ToastUtils.showToast(MainActivity.this,"not success");
-                    btn_blue.setText("连接失败");
+                    bluetoothDisConnected(null);
                     break;
                 case 3://接收的蓝牙返回数据
                     String res = msg.obj + "" ;
-                    ToastUtils.showToast(MainActivity.this,"res: " + res);
+                    dealReceiveMsg(res);
                     break;
             }
             super.handleMessage(msg);
         }
     };
+
+    /**
+     * 根据底层数据刷新页面
+     * @param res
+     */
+    private void dealReceiveMsg(String res) {
+        if(TextUtils.isEmpty(res))return;
+        ToastUtils.showToast(MainActivity.this,"收到数据: " + res);
+        mOrderUtils.dealReceiveMsg(res);
+    }
 
     /**
      * 连接蓝牙的弹出框
@@ -95,10 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pw.setOutsideTouchable(true);
             // 设置PopupWindow是否能响应点击事件
             pw.setTouchable(true);
-
-            // 显示PopupWindow，其中：
-             // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-            //window.showAsDropDown(anchor, xoff, yoff);
 
             initViews(contentView);
             pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -122,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(pw != null && pw.isShowing()){
             pw.dismiss();
         }
-        stopScanBlue();
+        //stopScanBlue();
     }
 
 
@@ -142,12 +155,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         filter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);// 蓝牙连接
         filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);// 蓝牙断开连接
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);// 蓝牙状态监听
-
         registerReceiver(receiver, filter);
-
-        //scanBlue();
-
         initTabViews();
+        mOrderUtils = new OrderUtils();
+        mOrderUtils.setListener(new OrderUtils.OnBottomMachineOrderListener() {
+            @Override
+            public void onDealReceiceMsg(String msg) {
+                //在此做页面上的刷新操作
+                LogUtil.e(TAG,msg.length() + "--result-->" + msg);
+            }
+        });
+
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            finish();
+            return;
+        }
+
+        if (!bluetoothAdapter.isEnabled()) {
+            bluetoothAdapter.enable();
+        }
+
+        autoConnectBluetooth();
     }
 
     private void initTabViews() {
@@ -249,16 +278,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter == null) {
-            finish();
-            return;
-        }
+    }
 
-        if (!bluetoothAdapter.isEnabled()) {
-            bluetoothAdapter.enable();
+    /**
+     * 自动连接上次连接的蓝牙
+     */
+    public void autoConnectBluetooth(){
+        Set<BluetoothDevice> pairedDevices = bluetoothAdapter
+                .getBondedDevices();
+        String lastConnectAddress = PreferenceUtils.getInstance().getBTAddress();
+        if(TextUtils.isEmpty(lastConnectAddress)) return ;
+        if (pairedDevices != null && pairedDevices.size() > 0) {
+            for (BluetoothDevice device : pairedDevices) {
+               if(lastConnectAddress.equals(device.getAddress())){
+                   connect(device);
+                   break ;
+               }
+            }
         }
-
     }
 
     /**
@@ -276,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 addresses.add(device.getAddress());
                 names.add(device.getName());
                 adapter.notifyDataSetChanged();
-                LogUtil.e("blue2", device.getName() + " : " + device.getAddress());
+                LogUtil.e(TAG, device.getName() + " : " + device.getAddress());
             }
         }
     }
@@ -327,7 +364,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     names.add(device.getName() + " : " + device.getAddress());
                     if(adapter != null) adapter.notifyDataSetChanged();
 
-                    LogUtil.e("blue",
+                    LogUtil.e(TAG,
                             device.getName() + " : " + device.getAddress());
                 }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED
@@ -352,11 +389,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     /**
-     *  蓝牙拦截成功处理
+     *  蓝牙连接成功处理
      */
     private void bluetoothConnected(BluetoothDevice device) {
-        LogUtil.e("blue", device.getName() + " : " + device.getAddress() + "-->已连接");
-        stopScanBlue();
+        LogUtil.e(TAG, device.getName() + " : " + device.getAddress() + "-->已连接");
+        //stopScanBlue();
+        PreferenceUtils.getInstance().saveBTName(device.getName() + "");
+        PreferenceUtils.getInstance().saveBTAddress(device.getAddress());
         dissmissPW();
         btn_blue.setText(device.getName() + "\n已连接");
     }
@@ -365,13 +404,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *蓝牙断开处理
      */
     private void bluetoothDisConnected(BluetoothDevice device) {
-        LogUtil.e("blue", device.getName() + " : " + device.getAddress() + "-->已断开");
-        btn_blue.setText("未连接");
+        if(device != null)LogUtil.e(TAG, device.getName() + " : " + device.getAddress() + "-->已断开");
+        if(clientSocket !=null && clientSocket.isConnected()){
+            ToastUtils.showToast(this,"连接失败");
+        }else{
+            btn_blue.setText("未连接");
+            tv_title.setText("蓝牙列表");
+        }
     }
 
-
-    BluetoothSocket clientSocket = null ;
-    AccpetBluetoothMsgThread abmThread = null ;
 
     /**
      * 连接蓝牙设备
@@ -385,7 +426,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             clientSocket = device.createRfcommSocketToServiceRecord(uuid);
             clientSocket.connect();
-
             abmThread = new AccpetBluetoothMsgThread(handler,clientSocket);
             abmThread.setIsRun(true);
             abmThread.start();

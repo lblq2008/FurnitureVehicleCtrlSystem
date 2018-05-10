@@ -10,6 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.fvcs.cn.utils.PreferenceUtils;
+
 /**
  * 过渡页面
  */
@@ -23,6 +25,7 @@ public class TransitionActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
         setContentView(R.layout.activity_transition);
+        PreferenceUtils.init(this);
         initViews();
     }
 

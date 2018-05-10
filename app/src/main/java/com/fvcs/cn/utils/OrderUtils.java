@@ -1,5 +1,7 @@
 package com.fvcs.cn.utils;
 
+import android.text.TextUtils;
+
 /**
  * 命令生成的工具类
  * Created by liubo on 2018/5/8.
@@ -7,12 +9,34 @@ package com.fvcs.cn.utils;
 
 public class OrderUtils {
 
+
+    OnBottomMachineOrderListener listener ;
+
+    public OnBottomMachineOrderListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnBottomMachineOrderListener listener) {
+        this.listener = listener;
+    }
+
+    /**
+     * 解析校验命令，并重新组装
+     * @param msg
+     */
+    public void dealReceiveMsg(String msg){
+        if(TextUtils.isEmpty(msg)) return ;
+        //解析校验命令
+
+        listener.onDealReceiceMsg(msg);
+    }
+
     /**
      * 小桌板的命令
      * true 开    false 关
      * @param open
      */
-    public static String getXZBOrder(boolean open){
+    public String getXZBOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -22,7 +46,7 @@ public class OrderUtils {
      * true 开    false 关
      * @param open
      */
-    public static String getCFJOrder(boolean open){
+    public String getCFJOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -32,7 +56,7 @@ public class OrderUtils {
      * true 开    false 关
      * @param open
      */
-    public static String getYYYLOrder(boolean open){
+    public String getYYYLOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -42,7 +66,7 @@ public class OrderUtils {
      * true 开    false 关
      * @param open
      */
-    public static String getDBXOrder(boolean open){
+    public String getDBXOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -52,7 +76,7 @@ public class OrderUtils {
      * true 升    false 降
      * @param open
      */
-    public static String getDSJOrder(boolean open){
+    public String getDSJOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -63,7 +87,7 @@ public class OrderUtils {
      * pos 0：全体 1：前左  2：前右  3：中左  4：中右  5：后左  6：后右
      * @param open
      */
-    public static String getOrder(int pos ,boolean open){
+    public String getOrder(int pos ,boolean open){
         String order = "" ;
         return order ;
     }
@@ -75,7 +99,7 @@ public class OrderUtils {
      * 1：吧台灯  2：前射灯  3：后射灯  4：阅读灯一  5：阅读灯二
      * @param open
      */
-    public static String getDLDGOrder(boolean open){
+    public String getDLDGOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -87,7 +111,7 @@ public class OrderUtils {
      * type: 颜色的类型
      * @param open
      */
-    public static String getRGBLightOrder(int pos , boolean open , int type){
+    public String getRGBLightOrder(int pos , boolean open , int type){
         String order = "" ;
         return order ;
     }
@@ -97,7 +121,7 @@ public class OrderUtils {
      * true 开    false 关
      * @param open
      */
-    public static String getXYOrder(boolean open){
+    public String getXYOrder(boolean open){
         String order = "" ;
         return order ;
     }
@@ -108,7 +132,7 @@ public class OrderUtils {
      * gear 档位
      * @param open
      */
-    public static String getXOrder(boolean open , int gear){
+    public String getXOrder(boolean open , int gear){
         String order = "" ;
         return order ;
     }
@@ -119,7 +143,7 @@ public class OrderUtils {
      * gear 档位
      * @param open
      */
-    public static String getLFOrder(boolean open , int gear){
+    public String getLFOrder(boolean open , int gear){
         String order = "" ;
         return order ;
     }
@@ -130,9 +154,12 @@ public class OrderUtils {
      * gear 档位
      * @param open
      */
-    public static String getNFOrder(boolean open , int gear){
+    public String getNFOrder(boolean open , int gear){
         String order = "" ;
         return order ;
     }
 
+    public interface OnBottomMachineOrderListener{
+        void onDealReceiceMsg(String msg);
+    }
 }
