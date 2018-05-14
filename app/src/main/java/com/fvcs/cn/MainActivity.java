@@ -43,7 +43,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "MainActivity";
-    private Button btn_up, btn_middle, btn_down,btn_blue;
+    private Button btn_dq, btn_dg, btn_hj,btn_blue;
     private RelativeLayout rl_dq, rl_dg, rl_hj;
 
     private String[] btnNames = {"灯光","电器","环境"};
@@ -181,12 +181,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initTabViews() {
         // TODO Auto-generated method stub
-        btn_up = (Button) findViewById(R.id.btn_up);
-        btn_up.setOnClickListener(this);
-        btn_down = (Button) findViewById(R.id.btn_down);
-        btn_down.setOnClickListener(this);
-        btn_middle = (Button) findViewById(R.id.btn_middle);
-        btn_middle.setOnClickListener(this);
+        btn_dq = (Button) findViewById(R.id.btn_dq);
+        btn_dq.setOnClickListener(this);
+        btn_hj = (Button) findViewById(R.id.btn_hj);
+        btn_hj.setOnClickListener(this);
+        btn_dg = (Button) findViewById(R.id.btn_dg);
+        btn_dg.setOnClickListener(this);
         btn_blue = (Button) findViewById(R.id.btn_blue);
         btn_blue.setOnClickListener(this);
         btn_blue.setText("未连接");
@@ -195,58 +195,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rl_dq = (RelativeLayout) findViewById(R.id.rl_dq);
         rl_hj = (RelativeLayout) findViewById(R.id.rl_hj);
 
-        dealViews();
+        //dealViews();
+        hiddenRLViews();
+        rl_dq.setVisibility(View.VISIBLE);
+        btn_dq.setSelected(true);
     }
 
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        String temp = "" ;
+        //String temp = "" ;
+        hiddenRLViews();
         switch (v.getId()) {
             case R.id.btn_blue:
                 showPW(v);
                 break;
-            case R.id.btn_up:
-                temp = btn_up.getText().toString();
-                btn_up.setText(btn_middle.getText().toString());
-                btn_middle.setText(temp);
+            case R.id.btn_dq:
+//                temp = btn_dq.getText().toString();
+//                btn_dq.setText(btn_dg.getText().toString());
+//                btn_dg.setText(temp);
                 sendBTMsg("1234");
+                rl_dq.setVisibility(View.VISIBLE);
+                btn_dq.setSelected(true);
                 break;
-            case R.id.btn_middle:
-
+            case R.id.btn_dg:
+                rl_dg.setVisibility(View.VISIBLE);
+                btn_dg.setSelected(true);
                 break;
-            case R.id.btn_down:
-                temp = btn_down.getText().toString();
-                btn_down.setText(btn_middle.getText().toString());
-                btn_middle.setText(temp);
+            case R.id.btn_hj:
+//                temp = btn_hj.getText().toString();
+//                btn_hj.setText(btn_dg.getText().toString());
+//                btn_dg.setText(temp);
+                rl_hj.setVisibility(View.VISIBLE);
+                btn_hj.setSelected(true);
                 sendBTMsg("AbCDe");
                 break;
             default:
                 break;
         }
-        temp = "";
-        dealViews();
+        //temp = "";
+        //dealViews();
     }
 
-    private void dealViews() {
-        // TODO Auto-generated method stub
-
-        hiddenRLViews();
-        String text = btn_middle.getText().toString();
-        if(btnNames[0].equals(text)){
-            rl_dg.setVisibility(View.VISIBLE);
-        }else if(btnNames[1].equals(text)){
-            rl_dq.setVisibility(View.VISIBLE);
-        }else{
-            rl_hj.setVisibility(View.VISIBLE);
-        }
-
-    }
+//    private void dealViews() {
+//        // TODO Auto-generated method stub
+//
+//        hiddenRLViews();
+//        String text = btn_dg.getText().toString();
+//        if(btnNames[0].equals(text)){
+//            rl_dg.setVisibility(View.VISIBLE);
+//        }else if(btnNames[1].equals(text)){
+//            rl_dq.setVisibility(View.VISIBLE);
+//        }else{
+//            rl_hj.setVisibility(View.VISIBLE);
+//        }
+//
+//    }
 
     private void hiddenRLViews(){
         rl_dg.setVisibility(View.GONE);
         rl_dq.setVisibility(View.GONE);
         rl_hj.setVisibility(View.GONE);
+        btn_dq.setSelected(false);
+        btn_dg.setSelected(false);
+        btn_hj.setSelected(false);
+
     }
 
     private void initViews(View pw) {
@@ -409,7 +422,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ToastUtils.showToast(this,"连接失败");
         }else{
             btn_blue.setText("未连接");
-            tv_title.setText("蓝牙列表");
+            if(tv_title!= null)tv_title.setText("蓝牙列表");
         }
     }
 
