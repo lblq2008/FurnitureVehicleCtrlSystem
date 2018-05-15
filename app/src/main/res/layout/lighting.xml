@@ -52,7 +52,7 @@
             android:id="@+id/cb_lighting_maybach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cb_lighting_mid_atmosphere"
+            android:layout_below="@id/cb_lighting_top_atmosphere"
             android:layout_toRightOf="@id/cb_lighting_mid_atmosphere"
             android:button="@null"
             android:checked="false"
