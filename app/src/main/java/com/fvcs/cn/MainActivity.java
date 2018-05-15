@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showPW(v);
                 break;
             case R.id.btn_dq:
-                sendBTMsg("1234 567890");
+                sendBTMsg("12340");
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
