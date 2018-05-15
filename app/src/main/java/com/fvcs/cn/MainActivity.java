@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                btn_dq.setText(btn_dg.getText().toString());
 //                btn_dg.setText(temp);
                 sendBTMsg("1234");
+                sendBTMsg(mOrderUtils.getLFOrder(true,1));
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
