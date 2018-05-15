@@ -1,21 +1,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@mipmap/background"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-     >
-
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical" >
+        android:layout_weight="7"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/rl_dq"
+            android:id="@+id/rl_main_electric"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
+            <include layout="@layout/electric" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -25,21 +26,17 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_dg"
+            android:id="@+id/rl_main_lighting"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+            <include layout="@layout/lighting" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="灯光" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_hj"
+            android:id="@+id/rl_main_environment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,49 +45,51 @@
                 android:text="环境" />
         </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#3f3f3f"
-        android:orientation="vertical" >
-    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="蓝牙"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#f3f3f3"
-        android:orientation="horizontal" >
+        android:layout_weight="2"
+        android:background="#00ffffff"
+        android:gravity="center_horizontal"
+
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_blue"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="蓝牙" />
+            android:id="@+id/btn_main_electric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginTop="10dp"
+            android:drawableTop="@mipmap/electric_on" />
 
         <Button
-            android:id="@+id/btn_dq"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:textColor="@color/tab_text_color"
-            android:text="电器" />
-
-        <Button
-            android:id="@+id/btn_dg"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:id="@+id/btn_main_lighting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="140dp"
+            android:layout_marginTop="20dp"
             android:clickable="false"
-            android:textColor="@color/tab_text_color"
-            android:text="灯光" />
+            android:background="@null"
+            android:drawableTop="@mipmap/lighting_off"
+             />
 
         <Button
-            android:id="@+id/btn_hj"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:textColor="@color/tab_text_color"
-            android:text="环境" />
+            android:id="@+id/btn_main_environment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginTop="10dp"
+            android:drawableTop="@mipmap/environmental_on" />
     </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/page_car"></ImageView>
+
+    <RelativeLayout
+        android:id="@+id/rl_lighting_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cb_lighting_top_atmosphere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@mipmap/electric_off"
+            android:gravity="center"
+            android:text="上氛围灯"
+            android:textColor="@color/color_hint_text" />
+
+        <CheckBox
+            android:id="@+id/cb_lighting_mid_atmosphere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_lighting_top_atmosphere"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@mipmap/electric_off"
+            android:text="中氛围灯"
+            android:textColor="@color/color_hint_text" />
+
+        <CheckBox
+            android:id="@+id/cb_lighting_down_atmosphere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_lighting_mid_atmosphere"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@mipmap/electric_off"
+            android:text="下氛围灯"
+            android:textColor="@color/color_hint_text" />
+
+        <CheckBox
+            android:id="@+id/cb_lighting_maybach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_lighting_mid_atmosphere"
+            android:layout_toRightOf="@id/cb_lighting_mid_atmosphere"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@mipmap/electric_off"
+            android:text="迈巴赫顶灯"
+            android:textColor="@color/color_hint_text" />
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -181,19 +181,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initTabViews() {
         // TODO Auto-generated method stub
-        btn_dq = (Button) findViewById(R.id.btn_dq);
+        btn_dq = (Button) findViewById(R.id.btn_main_electric);
         btn_dq.setOnClickListener(this);
-        btn_hj = (Button) findViewById(R.id.btn_hj);
+        btn_hj = (Button) findViewById(R.id.btn_main_environment);
         btn_hj.setOnClickListener(this);
-        btn_dg = (Button) findViewById(R.id.btn_dg);
+        btn_dg = (Button) findViewById(R.id.btn_main_lighting);
         btn_dg.setOnClickListener(this);
         btn_blue = (Button) findViewById(R.id.btn_blue);
         btn_blue.setOnClickListener(this);
         btn_blue.setText("未连接");
 
-        rl_dg = (RelativeLayout) findViewById(R.id.rl_dg);
-        rl_dq = (RelativeLayout) findViewById(R.id.rl_dq);
-        rl_hj = (RelativeLayout) findViewById(R.id.rl_hj);
+        rl_dg = (RelativeLayout) findViewById(R.id.rl_main_electric);
+        rl_dq = (RelativeLayout) findViewById(R.id.rl_main_lighting);
+        rl_hj = (RelativeLayout) findViewById(R.id.rl_main_environment);
 
         //dealViews();
         hiddenRLViews();
@@ -209,17 +209,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_blue:
                 showPW(v);
                 break;
-            case R.id.btn_dq:
+            case R.id.btn_main_electric:
                 sendBTMsg("123409777888");
-                sendBTMsg("12340333");
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
-            case R.id.btn_dg:
+            case R.id.btn_main_lighting:
                 rl_dg.setVisibility(View.VISIBLE);
                 btn_dg.setSelected(true);
                 break;
-            case R.id.btn_hj:
+            case R.id.btn_main_environment:
 
                 rl_hj.setVisibility(View.VISIBLE);
                 btn_hj.setSelected(true);

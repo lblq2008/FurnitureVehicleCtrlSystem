@@ -4,16 +4,31 @@
     android:id="@+id/activity_transition"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+   android:background="@color/color_back"
     tools:context="com.fvcs.cn.TransitionActivity">
-    <TextView
-        android:id="@+id/tv_bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:background="#0000ff"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:text="欢迎进入车载控制系统"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/tv_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="35sp"
+            android:textColor="#ffffff"
+            android:text="欢迎进入车载控制系统"/>
+        <ImageView
+            android:id="@+id/iv_trans_car"
+            android:layout_below="@id/tv_bg"
+            android:layout_marginTop="61dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home_car"
+            />
+    </RelativeLayout>
+
 </RelativeLayout>
