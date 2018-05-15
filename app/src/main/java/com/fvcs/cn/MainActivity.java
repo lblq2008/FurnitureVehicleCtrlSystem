@@ -204,18 +204,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        //String temp = "" ;
         hiddenRLViews();
         switch (v.getId()) {
             case R.id.btn_blue:
                 showPW(v);
                 break;
             case R.id.btn_dq:
-//                temp = btn_dq.getText().toString();
-//                btn_dq.setText(btn_dg.getText().toString());
-//                btn_dg.setText(temp);
-                sendBTMsg("1234");
-                sendBTMsg(mOrderUtils.getLFOrder(true,1));
+                sendBTMsg("1234 567890");
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
@@ -224,9 +219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_dg.setSelected(true);
                 break;
             case R.id.btn_hj:
-//                temp = btn_hj.getText().toString();
-//                btn_hj.setText(btn_dg.getText().toString());
-//                btn_dg.setText(temp);
+
                 rl_hj.setVisibility(View.VISIBLE);
                 btn_hj.setSelected(true);
                 sendBTMsg("AbCDe");
@@ -234,24 +227,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
-        //temp = "";
-        //dealViews();
-    }
 
-//    private void dealViews() {
-//        // TODO Auto-generated method stub
-//
-//        hiddenRLViews();
-//        String text = btn_dg.getText().toString();
-//        if(btnNames[0].equals(text)){
-//            rl_dg.setVisibility(View.VISIBLE);
-//        }else if(btnNames[1].equals(text)){
-//            rl_dq.setVisibility(View.VISIBLE);
-//        }else{
-//            rl_hj.setVisibility(View.VISIBLE);
-//        }
-//
-//    }
+    }
 
     private void hiddenRLViews(){
         rl_dg.setVisibility(View.GONE);
