@@ -30,7 +30,7 @@
             android:background="@android:color/transparent"
             android:button="@null"
             android:checked="false"
-            android:drawableTop="@drawable/envirnment_smoke_icon_drawable_selector"
+            android:drawableTop="@drawable/environment_smoke_icon_drawable_selector"
             android:gravity="center"
             android:text="吸烟"
             android:textColor="@color/color_hint_text" />
