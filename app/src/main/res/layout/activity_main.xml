@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/background"
     android:layout_height="match_parent"
+    android:background="@mipmap/background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,18 +17,13 @@
             android:layout_height="match_parent">
 
             <include layout="@layout/electric" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="电器" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_main_lighting"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <include layout="@layout/lighting" />
 
         </RelativeLayout>
@@ -38,14 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="环境" />
+            <include layout="@layout/environmental" />
         </RelativeLayout>
     </LinearLayout>
-
 
 
     <Button
@@ -61,16 +51,15 @@
         android:layout_weight="2"
         android:background="#00ffffff"
         android:gravity="center_horizontal"
-
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_main_electric"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
             android:layout_marginTop="10dp"
-            android:drawableTop="@mipmap/electric_on" />
+            android:background="@null"
+            android:drawableTop="@drawable/main_electric_drawable_selector" />
 
         <Button
             android:id="@+id/btn_main_lighting"
@@ -79,17 +68,16 @@
             android:layout_marginLeft="140dp"
             android:layout_marginRight="140dp"
             android:layout_marginTop="20dp"
-            android:clickable="false"
             android:background="@null"
-            android:drawableTop="@mipmap/lighting_off"
-             />
+            android:clickable="false"
+            android:drawableTop="@drawable/main_lighting_drawable_selector" />
 
         <Button
             android:id="@+id/btn_main_environment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
             android:layout_marginTop="10dp"
-            android:drawableTop="@mipmap/environmental_on" />
+            android:background="@null"
+            android:drawableTop="@drawable/main_environmental_drawable_selector" />
     </LinearLayout>
 </LinearLayout>

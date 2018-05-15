@@ -191,8 +191,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_blue.setOnClickListener(this);
         btn_blue.setText("未连接");
 
-        rl_dg = (RelativeLayout) findViewById(R.id.rl_main_electric);
-        rl_dq = (RelativeLayout) findViewById(R.id.rl_main_lighting);
+        rl_dg = (RelativeLayout) findViewById(R.id.rl_main_lighting);
+        rl_dq = (RelativeLayout) findViewById(R.id.rl_main_electric);
         rl_hj = (RelativeLayout) findViewById(R.id.rl_main_environment);
 
         //dealViews();
@@ -219,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_dg.setSelected(true);
                 break;
             case R.id.btn_main_environment:
-
                 rl_hj.setVisibility(View.VISIBLE);
                 btn_hj.setSelected(true);
                 sendBTMsg("AbCDe");
