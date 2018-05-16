@@ -96,10 +96,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/rl_lighting_left"
         android:layout_centerVertical="true"
         android:layout_marginBottom="30dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginRight="70dp">
 
         <CheckBox
             android:id="@+id/cb_lighting_front"

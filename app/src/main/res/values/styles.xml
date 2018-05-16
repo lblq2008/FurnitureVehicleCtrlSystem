@@ -7,5 +7,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="PWButtonNoCornerStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:textColor">@color/color_bluetooth_name</item>
+    </style>
 
 </resources>

@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // 创建PopupWindow对象，其中：
             // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
             // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点
-            pw=new PopupWindow(contentView, 800, 600, true);
+            pw=new PopupWindow(contentView, 700, 470, true);
             // 设置PopupWindow的背景
             pw.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             // 设置PopupWindow是否能响应外部点击事件
@@ -458,4 +458,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             abmThread.setIsRun(false);
         }
     }
+
+// TODO: 2018/5/16 添加动态显示蓝牙图标
+
 }

@@ -1,40 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
     <ImageView
+        android:id="@+id/iv_environmental_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@mipmap/page_car" />
-    <LinearLayout
-        android:id="@+id/rl_environment_smoke"
+
+    <RelativeLayout
+        android:id="@+id/fl_environment_smoke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginRight="-50dp"
+        android:layout_marginTop="45dp"
+        android:layout_toLeftOf="@id/iv_environmental_bg">
 
-        <ImageView
-            android:id="@+id/iv_smoke_bg"
+        <FrameLayout
+            android:id="@+id/rl_environment_smoke_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/bottom_left" />
+            android:layout_centerVertical="true"
+            android:background="@mipmap/bottom_left">
+
+            <CheckBox
+                android:id="@+id/cb_smoke_wind_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="-24dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+
+            <CheckBox
+                android:id="@+id/cb_smoke_wind_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="38dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@id/cb_smoke_wind_small"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+
+        </FrameLayout>
+
 
         <CheckBox
+            android:id="@+id/cb_environment_smoke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="-4dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@id/rl_environment_smoke_bg"
             android:background="@android:color/transparent"
             android:button="@null"
             android:checked="false"
             android:drawableTop="@drawable/environment_smoke_icon_drawable_selector"
             android:gravity="center"
+            android:paddingTop="17dp"
             android:text="吸烟"
             android:textColor="@color/color_hint_text" />
-    </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_environment_cold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginRight="-50dp"
+        android:layout_toLeftOf="@id/iv_environmental_bg">
+
+        <FrameLayout
+            android:id="@+id/fl_environment_cold_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/bottom_left">
+
+            <CheckBox
+                android:id="@+id/cb_cold_wind_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="-45dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+
+
+            <CheckBox
+                android:id="@+id/cb_cold_wind_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@id/cb_cold_wind_small"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+
+            <CheckBox
+                android:id="@+id/cb_cold_wind_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="7dp"
+                android:layout_toLeftOf="@id/cb_cold_wind_mid"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_large_drawable_selector"
+                android:visibility="visible" />
+
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_cold_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/bottom_left"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/cb_environment_cold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@id/fl_environment_cold_bg"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/environment_cold_wind_icon_drawable_selector"
+            android:gravity="center"
+            android:paddingTop="17dp"
+            android:text="冷风"
+            android:textColor="@color/color_hint_text" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_environment_new_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/fl_environment_smoke"
+        android:layout_marginLeft="-50dp"
+        android:layout_toRightOf="@id/iv_environmental_bg">
+
+        <CheckBox
+            android:id="@+id/cb_environment_new_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/environment_new_wind_icon_drawable_selector"
+            android:gravity="center"
+            android:paddingTop="19dp"
+            android:text="新风"
+            android:textColor="@color/color_hint_text" />
+
+        <FrameLayout
+            android:id="@+id/rl_environment_new_wind_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-8dp"
+            android:layout_toRightOf="@id/cb_environment_new_wind"
+            android:background="@mipmap/bottom_right">
+
+            <CheckBox
+                android:id="@+id/cb_new_wind_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-40dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+
+            <CheckBox
+                android:id="@+id/cb_new_wind_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="7dp"
+                android:layout_toRightOf="@id/cb_smoke_wind_small"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_new_wind_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-8dp"
+            android:layout_toRightOf="@id/cb_environment_new_wind"
+            android:src="@mipmap/bottom_right"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_environment_warm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/rl_environment_cold"
+        android:layout_marginLeft="-50dp"
+        android:layout_toRightOf="@id/iv_environmental_bg">
+
+        <CheckBox
+            android:id="@+id/cb_environment_warm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/environment_warm_wind_icon_drawable_selector"
+            android:gravity="center"
+            android:paddingTop="19dp"
+            android:text="暖风"
+            android:textColor="@color/color_hint_text" />
+
+        <FrameLayout
+            android:id="@+id/fl_environment_warm_wind_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-8dp"
+            android:layout_toRightOf="@id/cb_environment_warm"
+            android:background="@mipmap/bottom_right">
+
+            <CheckBox
+                android:id="@+id/cb_warm_wind_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-50dp"
+                android:layout_marginTop="7dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+
+            <CheckBox
+                android:id="@+id/cb_warm_wind_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-7dp"
+                android:layout_marginTop="7dp"
+                android:layout_toRightOf="@id/cb_warm_wind_small"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+
+            <CheckBox
+                android:id="@+id/cb_warm_wind_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="7dp"
+                android:layout_toRightOf="@id/cb_warm_wind_mid"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/environment_wind_large_drawable_selector" />
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_warm_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-8dp"
+            android:layout_toRightOf="@id/cb_environment_warm"
+            android:src="@mipmap/bottom_right"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

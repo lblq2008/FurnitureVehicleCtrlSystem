@@ -2,28 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f3f3f3"
+    android:background="#ffffff"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="正在扫描..."
+            android:textColor="#ff00ff"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#3f3f3f" />
+
+        <ListView
+            android:id="@+id/lv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="#ff00ff"
-        android:textSize="16sp"
-        android:text="正在扫描..."/>
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="9dp"
+        android:gravity="center_horizontal"
+        android:text="蓝牙设备列表"
+        android:textColor="@color/color_bluetooth_title"
+        android:textSize="18sp" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#3f3f3f"/>
-    <ListView
-        android:id="@+id/lv_data"
+        android:layout_height="1px"
+        android:background="@color/color_bluetooth_line" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:padding="14dp">
+
+        <ImageView
+            android:id="@+id/iv_bluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bluetooth_car" />
+
+        <TextView
+            android:id="@+id/btn_bluetooth_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_toRightOf="@id/iv_bluetooth"
+            android:gravity="center_vertical"
+            android:text="others" />
+    </RelativeLayout>
+
+
 </LinearLayout>
