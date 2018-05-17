@@ -125,4 +125,25 @@ public class AccpetBluetoothMsgThread extends Thread {
             }
         }
     }
+
+	/**
+	 * 蓝牙发送信息
+	 * @param msg
+	 */
+	public void sendBTMsgBytes(byte[] msg){
+		if(outputStream == null && clientSocket != null){
+			try {
+				outputStream = clientSocket.getOutputStream();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(outputStream != null) {
+			try {
+				outputStream.write(msg);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

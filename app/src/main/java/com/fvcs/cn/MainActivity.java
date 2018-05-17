@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showPW(v);
                 break;
             case R.id.btn_main_electric:
-                sendBTMsg("123409777888");
+                sendBTMsg(mOrderUtils.getCFJOrder(true));
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_main_environment:
                 rl_hj.setVisibility(View.VISIBLE);
                 btn_hj.setSelected(true);
-                sendBTMsg("AbCDe");
+                sendBTMsg(mOrderUtils.getCFJOrder(false));
                 break;
             default:
                 break;
@@ -435,9 +435,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 发送命令信息
      * @param msg
      */
-    private void sendBTMsg(String msg){
+    private void sendBTMsg(byte[] msg){
         if(abmThread != null){
-            abmThread.sendBTMsg(msg);
+            abmThread.sendBTMsgBytes(msg);
         }
     }
 
