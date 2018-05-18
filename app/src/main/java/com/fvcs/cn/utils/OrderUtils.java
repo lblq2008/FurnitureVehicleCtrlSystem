@@ -169,7 +169,7 @@ public class OrderUtils {
      * gear 档位
      * @param open
      */
-    public byte[] getXOrder(boolean open , int gear){
+    public byte[] getXFOrder(boolean open , int gear){
         byte no = 0x02 ;
         byte state = (byte)(open?0x31:0x30);
         return getSanLuCtrl(no,state,Gears[gear]);
