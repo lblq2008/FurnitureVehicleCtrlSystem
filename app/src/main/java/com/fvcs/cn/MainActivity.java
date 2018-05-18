@@ -536,11 +536,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_smoke_wind_small.setSelected(selected);
         cb_smoke_wind_mid.setSelected(selected);
     }
-
+//
     public void smokeWindViewEnabled(boolean enabled) {
         cb_smoke_wind_small.setSelected(enabled);
         cb_smoke_wind_mid.setSelected(enabled);
     }
+
 
     public void coldWindViewSelect(boolean selected) {
         cb_cold_wind_small.setSelected(selected);
