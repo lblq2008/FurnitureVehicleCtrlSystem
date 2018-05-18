@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/tv_title"
@@ -31,40 +31,40 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="9dp"
-        android:gravity="center_horizontal"
-        android:text="蓝牙设备列表"
-        android:textColor="@color/color_bluetooth_title"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/color_bluetooth_line" />
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_margin="9dp"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:text="蓝牙设备列表"-->
+    <!--android:textColor="@color/color_bluetooth_title"-->
+    <!--android:textSize="18sp" />-->
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1px"-->
+    <!--android:background="@color/color_bluetooth_line" />-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="14dp">
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="14dp">-->
 
-        <ImageView
-            android:id="@+id/iv_bluetooth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/bluetooth_car" />
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_bluetooth"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@mipmap/bluetooth_car" />-->
 
-        <TextView
-            android:id="@+id/btn_bluetooth_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:layout_toRightOf="@id/iv_bluetooth"
-            android:gravity="center_vertical"
-            android:text="others" />
-    </RelativeLayout>
+    <!--<TextView-->
+    <!--android:id="@+id/btn_bluetooth_name"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingLeft="20dp"-->
+    <!--android:layout_toRightOf="@id/iv_bluetooth"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:text="others" />-->
+    <!--</RelativeLayout>-->
 
 
 </LinearLayout>

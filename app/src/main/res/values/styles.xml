@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="PWButtonNoCornerStyle">
         <item name="android:textSize">15sp</item>
         <item name="android:layout_height">45dp</item>
@@ -14,4 +15,50 @@
         <item name="android:textColor">@color/color_bluetooth_name</item>
     </style>
 
+    <style name="ElectricCheckboxStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:checked">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/color_electric_name</item>
+    </style>
+
+    <style name="lightingCheckBoxStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:checked">false</item>
+        <item name="android:textColor">@color/color_hint_text</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <!--电器页面控制窗帘中间圆-->
+    <style name="ElectricUpdownMidStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:src">@mipmap/electric_cicle</item>
+    </style>
+    <!--电器页面中控制上的按钮-->
+    <style name="ElectricUpStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:src">@drawable/electric_circle_up_drawable_selector</item>
+    </style>
+
+    <!--电器页面中控制下的按钮-->
+    <style name="ElectricDownStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:src">@drawable/electric_circle_down_drawable_selector</item>
+    </style>
 </resources>

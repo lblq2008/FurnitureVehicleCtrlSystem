@@ -22,7 +22,6 @@
             android:id="@+id/rl_main_lighting"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <include layout="@layout/lighting" />
 
         </RelativeLayout>
@@ -31,7 +30,6 @@
             android:id="@+id/rl_main_environment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <include layout="@layout/environmental" />
         </RelativeLayout>
     </LinearLayout>

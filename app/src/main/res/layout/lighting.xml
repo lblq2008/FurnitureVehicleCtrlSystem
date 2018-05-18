@@ -23,73 +23,50 @@
 
         <CheckBox
             android:id="@+id/cb_lighting_top_atmosphere"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_marginBottom="20dp"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:checked="false"
+            android:contentDescription="1"
             android:drawableTop="@drawable/lighting_top_atmosphere_drawable_selector"
-            android:gravity="center"
-            android:text="上氛围灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="上氛围灯" />
 
 
         <CheckBox
             android:id="@+id/cb_lighting_mid_atmosphere"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_top_atmosphere"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="30dp"
-            android:background="@android:color/transparent"
-            android:button="@null"
+            android:contentDescription="2"
             android:drawableTop="@drawable/lighting_mid_atmosphere_drawable_selector"
-            android:gravity="center"
-            android:text="中氛围灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="中氛围灯" />
 
         <CheckBox
             android:id="@+id/cb_lighting_down_atmosphere"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_mid_atmosphere"
-            android:background="@android:color/transparent"
-            android:button="@null"
+            android:contentDescription="3"
             android:drawableTop="@drawable/lighting_down_atmosphere_drawable_selector"
-            android:gravity="center"
-            android:text="下氛围灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="下氛围灯" />
 
         <CheckBox
             android:id="@+id/cb_lighting_mbhtop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_top_atmosphere"
             android:layout_toRightOf="@id/cb_lighting_mid_atmosphere"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:checked="false"
+            android:contentDescription="11"
             android:drawableTop="@drawable/lighting_mbhtop_lamp_drawable_selector"
-            android:gravity="center"
-            android:text="迈巴赫顶灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="迈巴赫顶灯" />
 
     </RelativeLayout>
 
     <CheckBox
         android:id="@+id/cb_lighting_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/lightingCheckBoxStyle"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/rl_lighting_left"
-        android:background="@android:color/transparent"
-        android:button="@null"
-        android:checked="false"
+        android:contentDescription="5"
         android:drawableTop="@drawable/lighting_bar_lamp_drawable_selector"
-        android:gravity="center"
-        android:text="吧台灯"
-        android:textColor="@color/color_hint_text" />
+        android:text="吧台灯" />
 
     <RelativeLayout
         android:id="@+id/rl_lighting_right"
@@ -103,59 +80,41 @@
 
         <CheckBox
             android:id="@+id/cb_lighting_front"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_marginBottom="20dp"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:checked="false"
+            android:contentDescription="6"
             android:drawableTop="@drawable/lighting_front_drawable_selector"
-            android:gravity="center"
-            android:text="前射灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="前射灯" />
 
 
         <CheckBox
             android:id="@+id/cb_lighting_read_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_front"
             android:layout_marginBottom="20dp"
-            android:background="@android:color/transparent"
-            android:button="@null"
+            android:contentDescription="9"
             android:drawableTop="@drawable/lighting_read_two_drawable_selector"
-            android:gravity="center"
-            android:text="阅读灯二"
-            android:textColor="@color/color_hint_text" />
+            android:text="阅读灯二" />
 
         <CheckBox
             android:id="@+id/cb_lighting_rear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_read_two"
-            android:background="@android:color/transparent"
-            android:button="@null"
+            android:contentDescription="7"
             android:drawableTop="@drawable/lighting_rear_drawable_selector"
-            android:gravity="center"
-            android:text="后射灯"
-            android:textColor="@color/color_hint_text" />
+            android:text="后射灯" />
 
 
     </RelativeLayout>
 
     <CheckBox
         android:id="@+id/cb_lighting_read_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/lightingCheckBoxStyle"
         android:layout_centerVertical="true"
         android:layout_marginRight="30dp"
         android:layout_toLeftOf="@id/rl_lighting_right"
-        android:background="@android:color/transparent"
-        android:button="@null"
-        android:checked="false"
+        android:contentDescription="8"
         android:drawableTop="@drawable/lighting_read_one_drawable_selector"
-        android:gravity="center"
-        android:text="阅读灯一"
-        android:textColor="@color/color_hint_text" />
+        android:text="阅读灯一" />
 
 </RelativeLayout>

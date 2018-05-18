@@ -16,8 +16,8 @@ public class LogUtil {
 	public static int INFO = 3;
 	public static int WARN = 4;
 	public static int ERROR = 5;
-	public static int NOTHING = 6;//不打印日
-	public static int LEVEL = ALLLOG;
+	public static int NOTHING = 6;//不打印日志
+	public static int LEVEL = ALLLOG;//打印
 
 	public static void v(String tag, String msg) {
 		if (LEVEL <= VERBOSE) {
