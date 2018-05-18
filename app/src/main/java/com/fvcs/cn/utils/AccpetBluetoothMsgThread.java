@@ -3,6 +3,7 @@ package com.fvcs.cn.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
@@ -44,15 +45,17 @@ public class AccpetBluetoothMsgThread extends Thread {
 		try {
 				is = clientSocket.getInputStream();
 				while (isRun) {
-					byte[] buffer = new byte[16];
+					byte[] buffer = new byte[27];
 					int count = is.read(buffer);
 					LogUtil.e(TAG,"count: "+ count);
 
 					Message message = Message.obtain();
 					//message.obj = byte2HexStr(buffer);
-					message.obj = new String(buffer,"UTF-8");
+					//message.obj = new String(buffer,"UTF-8");
 
-                    message.what = 3 ;
+					message.obj = getStringFromByte(buffer);
+
+					message.what = 3 ;
 //					message.obj = new String(buffer);
 					handler.sendMessage(message);
 				}
@@ -62,7 +65,22 @@ public class AccpetBluetoothMsgThread extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
+
+	//77 32	14	30	31	31	31	30	31	31	31	31	31	31	30	31	31	31	31	31	31  30 30 31 38	0d0a
+
+
+	public String getStringFromByte(byte[] data){
+		try {
+			String con = new String(data,"UTF-8");
+			if(con.length()>=26){
+				return con.substring(3,con.length()-3);
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return null ;
+	}
+
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
