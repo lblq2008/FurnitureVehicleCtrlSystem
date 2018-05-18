@@ -9,6 +9,7 @@
     <color name="color_bluetooth_text">#00c6af</color>
     <color name="color_bluetooth_name">#424242</color>
     <color name="color_bluetooth_line">#d6d6d6</color>
+    <color name="color_electric_name">#108e82</color>
     <color name="color_bluetooth_title">#303030</color>
 
 </resources>

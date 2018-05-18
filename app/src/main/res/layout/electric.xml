@@ -9,18 +9,515 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:visibility="invisible"
         android:src="@mipmap/page_car" />
 
     <ImageView
         android:id="@+id/iv_electric_right_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
         android:src="@mipmap/page_car" />
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:id="@+id/rl_curtain_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_left_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="65dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_left_front_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_leftfront_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="左前窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_leftfront_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_left_front_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_leftfront_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_left_front_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_left_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_curtain_left_front"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_left_back_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_leftback_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="左后窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_leftback_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_left_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_leftback_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_left_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_below="@id/rl_curtain_left_back">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_back_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_back_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="后窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_back_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_back_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_electric_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:gravity="center_horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_electric_coffee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_coffee_drawable_selector"
+            android:gravity="center"
+            android:text="咖啡机"
+            android:textColor="@color/color_electric_name" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/cb_electric_coffee"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_tv_drawable_selector"
+            android:gravity="center"
+            android:text="电视机"
+            android:textColor="@color/color_electric_name" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_refrigerator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_electric_coffee"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_refrigerator_drawable_selector"
+            android:gravity="center"
+            android:text="电冰箱"
+            android:textColor="@color/color_electric_name" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_electric_tv"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/cb_electric_refrigerator"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_audio_drawable_selector"
+            android:gravity="center"
+            android:text="影音娱乐"
+            android:textColor="@color/color_electric_name" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_electric_refrigerator"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_table_drawable_selector"
+            android:gravity="center"
+            android:text="小桌子"
+            android:textColor="@color/color_electric_name" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_door"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cb_electric_audio"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/cb_electric_table"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/electric_door_drawable_selector"
+            android:gravity="center"
+            android:text="电动舱门"
+            android:textColor="@color/color_electric_name" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_curtain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_electric_mid"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/curtain_bottom_heng" />
+
+        <ImageView
+            android:id="@+id/iv_all_curtain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/electric_cicle" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_all_curtain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@mipmap/curtain"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="所有窗帘"
+            android:textColor="@color/color_electric_name" />
+
+        <ImageButton
+            android:id="@+id/ib_electric_all_curtain_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/iv_all_curtain"
+            android:background="@android:color/transparent"
+            android:src="@drawable/electric_circle_up_drawable_selector" />
+
+        <ImageButton
+            android:id="@+id/ib_electric_all_curtain_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_all_curtain"
+            android:background="@android:color/transparent"
+            android:src="@drawable/electric_circle_down_drawable_selector" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_curtain_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/iv_electric_right_bg"
+        android:layout_alignTop="@+id/iv_electric_right_bg"
+        android:layout_marginStart="100dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_right_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_right_front_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_rightfront_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="右前窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_rightfront_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_right_front_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_rightfront_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_right_front_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_right_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_curtain_right_front"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_right_back_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_rightback_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="右后窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_rightback_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_right_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_rightback_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_right_back_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_curtain_houback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_curtain_right_back"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_houback_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/electric_cicle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_houback_curtain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@mipmap/curtain"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="后窗帘"
+                android:textColor="@color/color_electric_name" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_houback_curtain_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/iv_houback_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_up_drawable_selector" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_houback_curtain_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_houback_curtain"
+                android:background="@android:color/transparent"
+                android:src="@drawable/electric_circle_down_drawable_selector" />
+        </RelativeLayout>
+    </RelativeLayout>
+
 </RelativeLayout>

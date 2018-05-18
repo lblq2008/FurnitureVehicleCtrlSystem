@@ -32,7 +32,7 @@ public class TransitionActivity extends AppCompatActivity {
     private void initViews() {
         tv_bg = (TextView) findViewById(R.id.tv_bg);
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv_bg, "alpha", 1f, 0.5f, 1f);
-        animator.setDuration(3000);
+        animator.setDuration(1000);
         animator.start();
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
