@@ -399,6 +399,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PreferenceUtils.getInstance().saveBTAddress(device.getAddress());
         dissmissPW();
 //        btn_blue.setText(device.getName() + "\n已连接");
+        btn_blue.setSelected(true);
     }
 
     /**
@@ -412,7 +413,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
 //            btn_blue.setText("未连接");
             if (tv_title != null) tv_title.setText("蓝牙列表");
+            btn_blue.setSelected(false);
         }
+
     }
 
 
