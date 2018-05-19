@@ -31,9 +31,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="-24dp"
-                android:onClick="coldWind"
                 android:background="@android:color/transparent"
-                android:contentDescription="1-1"
+                android:contentDescription="1-1-1"
+                android:onClick="coldWind"
                 android:src="@drawable/environment_wind_small_drawable_selector" />
 
             <ImageButton
@@ -44,9 +44,9 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="38dp"
                 android:layout_toLeftOf="@id/cb_smoke_wind_small"
-                android:onClick="coldWind"
                 android:background="@android:color/transparent"
-                android:contentDescription="1-2"
+                android:contentDescription="1-1-2"
+                android:onClick="coldWind"
                 android:src="@drawable/environment_wind_mid_drawable_selector" />
 
         </FrameLayout>
@@ -94,7 +94,6 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="2-1-1"
                 android:onClick="coldWind"
-
                 android:src="@drawable/environment_wind_small_drawable_selector" />
 
             <ImageButton
@@ -184,33 +183,29 @@
             android:layout_toRightOf="@id/cb_environment_new_wind"
             android:background="@mipmap/bottom_right">
 
-            <CheckBox
+            <ImageButton
                 android:id="@+id/cb_new_wind_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="-40dp"
-                android:layout_marginTop="7dp"
                 android:background="@android:color/transparent"
-                android:button="@null"
-                android:checked="false"
-                android:contentDescription="3-1"
-                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+                android:contentDescription="3-1-1"
+                android:onClick="coldWind"
+                android:src="@drawable/environment_wind_small_drawable_selector" />
 
-            <CheckBox
+            <ImageButton
                 android:id="@+id/cb_new_wind_mid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="7dp"
                 android:layout_toRightOf="@id/cb_smoke_wind_small"
                 android:background="@android:color/transparent"
-                android:button="@null"
-                android:checked="false"
-                android:contentDescription="3-2"
-                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+                android:contentDescription="3-1-2"
+                android:onClick="coldWind"
+                android:src="@drawable/environment_wind_mid_drawable_selector" />
 
         </FrameLayout>
 
@@ -257,61 +252,44 @@
             android:layout_toRightOf="@id/cb_environment_warm"
             android:background="@mipmap/bottom_right">
 
-            <CheckBox
+            <ImageButton
                 android:id="@+id/cb_warm_wind_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="-50dp"
-                android:layout_marginTop="7dp"
                 android:background="@android:color/transparent"
-                android:button="@null"
-                android:checked="false"
-                android:contentDescription="4-1"
-                android:drawableTop="@drawable/environment_wind_small_drawable_selector" />
+                android:contentDescription="4-1-1"
+                android:onClick="coldWind"
+                android:src="@drawable/environment_wind_small_drawable_selector" />
 
-            <CheckBox
+            <ImageButton
                 android:id="@+id/cb_warm_wind_mid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="-7dp"
-                android:layout_marginTop="7dp"
                 android:layout_toRightOf="@id/cb_warm_wind_small"
                 android:background="@android:color/transparent"
-                android:button="@null"
-                android:checked="false"
-                android:contentDescription="4-2"
-                android:drawableTop="@drawable/environment_wind_mid_drawable_selector" />
+                android:contentDescription="4-1-2"
+                android:onClick="coldWind"
+                android:src="@drawable/environment_wind_mid_drawable_selector" />
 
-            <CheckBox
+            <ImageButton
                 android:id="@+id/cb_warm_wind_large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="7dp"
                 android:layout_toRightOf="@id/cb_warm_wind_mid"
                 android:background="@android:color/transparent"
-                android:button="@null"
-                android:checked="false"
-                android:contentDescription="4-3"
-                android:drawableTop="@drawable/environment_wind_large_drawable_selector" />
+                android:contentDescription="4-1-3"
+                android:onClick="coldWind"
+                android:src="@drawable/environment_wind_large_drawable_selector" />
 
         </FrameLayout>
-
-        <ImageView
-            android:id="@+id/iv_warm_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="-8dp"
-            android:layout_toRightOf="@id/cb_environment_warm"
-            android:src="@mipmap/bottom_right"
-            android:visibility="gone" />
-
 
     </RelativeLayout>
 

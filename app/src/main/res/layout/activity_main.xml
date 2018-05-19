@@ -1,88 +1,105 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background"
-    android:orientation="vertical">
+    android:background="@mipmap/background">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/rl_main_electric"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include layout="@layout/electric" />
-        </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/rl_main_lighting"
+            <RelativeLayout
+                android:id="@+id/rl_main_electric"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/electric" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_main_lighting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/lighting" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_main_environment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/environmental" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include layout="@layout/lighting" />
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#00ffffff"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        </RelativeLayout>
+            <Button
+                android:id="@+id/btn_main_electric"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:drawableTop="@drawable/main_electric_drawable_selector" />
 
-        <RelativeLayout
-            android:id="@+id/rl_main_environment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include layout="@layout/environmental" />
-        </RelativeLayout>
+            <Button
+                android:id="@+id/btn_main_lighting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="140dp"
+                android:layout_marginRight="140dp"
+                android:layout_marginTop="20dp"
+                android:background="@null"
+                android:clickable="false"
+                android:drawableTop="@drawable/main_lighting_drawable_selector" />
+
+            <Button
+                android:id="@+id/btn_main_environment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:drawableTop="@drawable/main_environmental_drawable_selector" />
+        </LinearLayout>
     </LinearLayout>
 
+    <CheckBox
+        android:id="@+id/btn_blue1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|bottom"
+        android:background="@android:color/transparent"
+        android:button="@null"
+        android:checked="false"
+        android:drawableTop="@drawable/main_bluetooth_drawable_selector"
+        android:visibility="gone" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="#00ffffff"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/btn_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|bottom"
+        android:background="@android:color/transparent"
+        android:src="@drawable/main_bluetooth_drawable_selector" />
 
-        <Button
-            android:id="@+id/btn_main_electric"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:drawableTop="@drawable/main_electric_drawable_selector" />
-
-        <Button
-            android:id="@+id/btn_main_lighting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
-            android:layout_marginRight="140dp"
-            android:layout_marginTop="20dp"
-            android:background="@null"
-            android:clickable="false"
-            android:drawableTop="@drawable/main_lighting_drawable_selector" />
-
-        <Button
-            android:id="@+id/btn_main_environment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:drawableTop="@drawable/main_environmental_drawable_selector" />
-
-        <CheckBox
-            android:id="@+id/btn_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="right"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:checked="false"
-            android:drawableTop="@drawable/main_bluetooth_drawable_selector" />
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -46,7 +46,8 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = "MainActivity";
-    private Button btn_dq, btn_dg, btn_hj, btn_blue;
+    private Button btn_dq, btn_dg, btn_hj;
+    private ImageButton btn_blue;
     private RelativeLayout rl_dq, rl_dg, rl_hj;
 
     private String[] btnNames = {"灯光", "电器", "环境"};
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDealReceiceMsg(String msg) {
                 //在此做页面上的刷新操作
+                refreshElectricState(msg);
                 LogUtil.e(TAG, msg.length() + "--result-->" + msg);
             }
         });
@@ -194,9 +196,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_hj.setOnClickListener(this);
         btn_dg = (Button) findViewById(R.id.btn_main_lighting);
         btn_dg.setOnClickListener(this);
-        btn_blue = (Button) findViewById(R.id.btn_blue);
+        btn_blue = (ImageButton) findViewById(R.id.btn_blue);
         btn_blue.setOnClickListener(this);
-        btn_blue.setText("未连接");
+//        btn_blue.setText("未连接");
 
         rl_dg = (RelativeLayout) findViewById(R.id.rl_main_lighting);
         rl_dq = (RelativeLayout) findViewById(R.id.rl_main_electric);
@@ -396,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PreferenceUtils.getInstance().saveBTName(device.getName() + "");
         PreferenceUtils.getInstance().saveBTAddress(device.getAddress());
         dissmissPW();
-        btn_blue.setText(device.getName() + "\n已连接");
+//        btn_blue.setText(device.getName() + "\n已连接");
     }
 
     /**
@@ -408,7 +410,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (clientSocket != null && clientSocket.isConnected()) {
             ToastUtils.showToast(this, "连接失败");
         } else {
-            btn_blue.setText("未连接");
+//            btn_blue.setText("未连接");
             if (tv_title != null) tv_title.setText("蓝牙列表");
         }
     }
@@ -485,39 +487,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private ImageButton cb_smoke_wind_small, cb_smoke_wind_mid, cb_cold_wind_small, cb_cold_wind_mid, cb_cold_wind_large;
-    private CheckBox cb_environment_cold;
+    private ImageButton cb_smoke_wind_small, cb_smoke_wind_mid, cb_cold_wind_small, cb_cold_wind_mid, cb_cold_wind_large,
+            cb_new_wind_small, cb_new_wind_mid, cb_warm_wind_small, cb_warm_wind_mid, cb_warm_wind_large;
+    private CheckBox cb_electric_coffee, cb_electric_refrigerator, cb_electric_audio, cb_electric_table, cb_electric_door,
+            cb_lighting_mbhtop, cb_lighting_bar, cb_lighting_front, cb_lighting_read_one, cb_lighting_read_two, cb_lighting_rear,
+            cb_lighting_top_atmosphere, cb_lighting_mid_atmosphere, cb_lighting_down_atmosphere,
+            cb_environment_smoke, cb_environment_cold, cb_environment_new_wind, cb_environment_warm_wind;
 
     public void initAppView() {
 
+
         //电器
-        ((CheckBox) findViewById(R.id.cb_electric_coffee)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_electric_refrigerator)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_electric_audio)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_electric_table)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_electric_door)).setOnCheckedChangeListener(this);
+        cb_electric_coffee = (CheckBox) findViewById(R.id.cb_electric_coffee);
+        cb_electric_coffee.setOnCheckedChangeListener(this);
+        cb_electric_refrigerator = (CheckBox) findViewById(R.id.cb_electric_refrigerator);
+        cb_electric_refrigerator.setOnCheckedChangeListener(this);
+        cb_electric_audio = (CheckBox) findViewById(R.id.cb_electric_audio);
+        cb_electric_audio.setOnCheckedChangeListener(this);
+        cb_electric_table = (CheckBox) findViewById(R.id.cb_electric_table);
+        cb_electric_table.setOnCheckedChangeListener(this);
+        cb_electric_door = (CheckBox) findViewById(R.id.cb_electric_door);
+        cb_electric_door.setOnCheckedChangeListener(this);
         //灯光
-        ((CheckBox) findViewById(R.id.cb_lighting_mbhtop)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_lighting_bar)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_lighting_front)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_lighting_read_two)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_lighting_read_one)).setOnCheckedChangeListener(this);
-        ((CheckBox) findViewById(R.id.cb_lighting_rear)).setOnCheckedChangeListener(this);
+        cb_lighting_mbhtop = (CheckBox) findViewById(R.id.cb_lighting_mbhtop);
+        cb_lighting_mbhtop.setOnCheckedChangeListener(this);
+        cb_lighting_bar = (CheckBox) findViewById(R.id.cb_lighting_bar);
+        cb_lighting_bar.setOnCheckedChangeListener(this);
+        cb_lighting_front = (CheckBox) findViewById(R.id.cb_lighting_front);
+        cb_lighting_front.setOnCheckedChangeListener(this);
+        cb_lighting_read_two = (CheckBox) findViewById(R.id.cb_lighting_read_two);
+        cb_lighting_read_two.setOnCheckedChangeListener(this);
+        cb_lighting_read_one = (CheckBox) findViewById(R.id.cb_lighting_read_one);
+        cb_lighting_read_one.setOnCheckedChangeListener(this);
+        cb_lighting_rear = (CheckBox) findViewById(R.id.cb_lighting_rear);
+        cb_lighting_rear.setOnCheckedChangeListener(this);
 
         mAtmosphereChaneListener = new AtmosphereChaneListener();
 
         //氛围灯
-        ((CheckBox) findViewById(R.id.cb_lighting_top_atmosphere)).setOnCheckedChangeListener(mAtmosphereChaneListener);
-        ((CheckBox) findViewById(R.id.cb_lighting_mid_atmosphere)).setOnCheckedChangeListener(mAtmosphereChaneListener);
-        ((CheckBox) findViewById(R.id.cb_lighting_down_atmosphere)).setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_top_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_top_atmosphere);
+        cb_lighting_top_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_mid_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_mid_atmosphere);
+        cb_lighting_mid_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_down_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_down_atmosphere);
+        cb_lighting_down_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
 
         mHJChangeListener = new HJChangeListener();
         //环境风
-        ((CheckBox) findViewById(R.id.cb_environment_smoke)).setOnCheckedChangeListener(mHJChangeListener);
-        ((CheckBox) findViewById(R.id.cb_environment_new_wind)).setOnCheckedChangeListener(mHJChangeListener);
+        cb_environment_smoke = (CheckBox) findViewById(R.id.cb_environment_smoke);
+        cb_environment_smoke.setOnCheckedChangeListener(mHJChangeListener);
+        cb_environment_new_wind = (CheckBox) findViewById(R.id.cb_environment_new_wind);
+        cb_environment_new_wind.setOnCheckedChangeListener(mHJChangeListener);
         cb_environment_cold = (CheckBox) findViewById(R.id.cb_environment_cold);//冷风
         cb_environment_cold.setOnCheckedChangeListener(mHJChangeListener);
-        ((CheckBox) findViewById(R.id.cb_environment_warm)).setOnCheckedChangeListener(mHJChangeListener);
+        cb_environment_warm_wind = (CheckBox) findViewById(R.id.cb_environment_warm);
+        cb_environment_warm_wind.setOnCheckedChangeListener(mHJChangeListener);
         //风速
         cb_smoke_wind_small = (ImageButton) findViewById(R.id.cb_smoke_wind_small);
         cb_smoke_wind_mid = (ImageButton) findViewById(R.id.cb_smoke_wind_mid);
@@ -525,40 +549,93 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_cold_wind_mid = (ImageButton) findViewById(R.id.cb_cold_wind_mid);
         cb_cold_wind_large = (ImageButton) findViewById(R.id.cb_cold_wind_large);
 
+        cb_new_wind_small = (ImageButton) findViewById(R.id.cb_new_wind_small);
+        cb_new_wind_mid = (ImageButton) findViewById(R.id.cb_new_wind_mid);
 
-        smokeWindSelected(false);
+        cb_warm_wind_small = (ImageButton) findViewById(R.id.cb_warm_wind_small);
+        cb_warm_wind_mid = (ImageButton) findViewById(R.id.cb_warm_wind_mid);
+        cb_warm_wind_large = (ImageButton) findViewById(R.id.cb_warm_wind_large);
+
+
+        smokeWindViewSelected(false);
         smokeWindViewEnabled(false);
         coldWindViewEnabled(false);
         coldWindViewSelect(false);
+        newWindViewSelect(false);
+        newWindViewEnabled(false);
+        warmWindViewSelect(false);
+        warmWindViewEnabled(false);
+
+//        refreshElectricState("111011111111102111111");
     }
 
-    public void smokeWindSelected(boolean selected) {
+    //吸烟选中按钮
+    public void smokeWindViewSelected(boolean selected) {
         cb_smoke_wind_small.setSelected(selected);
         cb_smoke_wind_mid.setSelected(selected);
     }
-//
+
+    //吸烟可用按钮
     public void smokeWindViewEnabled(boolean enabled) {
-        cb_smoke_wind_small.setSelected(enabled);
-        cb_smoke_wind_mid.setSelected(enabled);
+        cb_smoke_wind_small.setEnabled(enabled);
+        cb_smoke_wind_mid.setEnabled(enabled);
     }
 
-
+    //冷风选中按钮
     public void coldWindViewSelect(boolean selected) {
         cb_cold_wind_small.setSelected(selected);
         cb_cold_wind_mid.setSelected(selected);
         cb_cold_wind_large.setSelected(selected);
     }
 
+    //冷风2档
+    public void coldWindView2() {
+        cb_cold_wind_small.setSelected(true);
+        cb_cold_wind_mid.setSelected(true);
+        cb_cold_wind_large.setSelected(false);
+
+    }
+
+    //冷风可用按钮
     public void coldWindViewEnabled(boolean enabled) {
         cb_cold_wind_small.setEnabled(enabled);
         cb_cold_wind_mid.setEnabled(enabled);
         cb_cold_wind_large.setEnabled(enabled);
     }
 
-
-
-    public void electricSwitch(View view) {
+    //新风选中按钮
+    public void newWindViewSelect(boolean selected) {
+        cb_new_wind_small.setSelected(selected);
+        cb_new_wind_mid.setSelected(selected);
     }
+
+    //新风可用按钮
+    public void newWindViewEnabled(boolean enabled) {
+        cb_new_wind_small.setEnabled(enabled);
+        cb_new_wind_mid.setEnabled(enabled);
+    }
+
+    //暖风选中按钮
+    public void warmWindViewSelect(boolean selected) {
+        cb_warm_wind_small.setSelected(selected);
+        cb_warm_wind_mid.setSelected(selected);
+        cb_warm_wind_large.setSelected(selected);
+
+    }
+
+    //暖风2档
+    public void warmWindView2() {
+        cb_warm_wind_small.setSelected(true);
+        cb_warm_wind_mid.setSelected(true);
+    }
+
+    //暖风可用按钮
+    public void warmWindViewEnabled(boolean enabled) {
+        cb_warm_wind_small.setEnabled(enabled);
+        cb_warm_wind_mid.setEnabled(enabled);
+        cb_warm_wind_large.setEnabled(enabled);
+    }
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -585,7 +662,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (buttonView.getId()) {
                 case R.id.cb_environment_smoke:
                     sendBTMsg(mOrderUtils.getXYOrder(isChecked));
-
+                    smokeWindViewEnabled(isChecked);
+                    smokeWindViewSelected(false);
+                    if (isChecked) {
+                        smokeWindViewSelected(true);
+                    }
                     break;
                 case R.id.cb_environment_cold:
                     sendBTMsg(mOrderUtils.getLFOrder(isChecked, 1));
@@ -598,9 +679,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.cb_environment_new_wind:
                     sendBTMsg(mOrderUtils.getXFOrder(isChecked, 1));
+                    newWindViewEnabled(isChecked);
+                    newWindViewSelect(false);
+                    if (isChecked) {
+                        cb_new_wind_small.setSelected(true);
+                    }
                     break;
                 case R.id.cb_environment_warm:
-                    sendBTMsg(mOrderUtils.getNFOrder(isChecked, 1));
+                    sendBTMsg(mOrderUtils.getLFOrder(isChecked, 1));
+                    warmWindViewEnabled(isChecked);
+                    warmWindViewSelect(false);
+                    if (isChecked) {
+                        cb_warm_wind_small.setSelected(true);
+                    }
                     break;
             }
             LogUtil.e(TAG, "环境风速" + (Integer.parseInt(buttonView.getContentDescription().toString().split("-")[0]) + "----->" + isChecked));
@@ -618,41 +709,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String wind_open = view.getContentDescription().toString().split("-")[1];//风的开关
             String wind_speed = view.getContentDescription().toString().split("-")[2];//风速
             LogUtil.e(TAG, "获取的数据-----》" + wind_name_position + "------" + wind_open + "------" + wind_speed);
-            switch (wind_name_position) {
-                case "1"://吸烟
-                    break;
-                case "2"://冷风
-                    sendBTMsg(mOrderUtils.getLFOrder(selected, Integer.valueOf(wind_speed)));
-                    LogUtil.e(TAG, "selected----->" + selected);
-                    break;
-                case "3"://新风
-                    break;
-                case "4"://暖风
-                    break;
-                default:
-                    break;
-
-            }
-            switch (wind_speed) {
-                case "1":
-                    cb_cold_wind_mid.setSelected(false);
-                    cb_cold_wind_large.setSelected(false);
-                    break;
-                case "2":
+            if (wind_name_position.equals("1")) {//吸烟
+                sendBTMsg(mOrderUtils.getXYOrder(selected));
+                smokeWindViewSelected(true);
+            } else if ("2".equals(wind_name_position)) {//冷风
+                sendBTMsg(mOrderUtils.getLFOrder(selected, Integer.valueOf(wind_speed)));
+                coldWindViewSelect(false);
+                if ("1".equals(wind_speed)) {
                     cb_cold_wind_small.setSelected(true);
-                    cb_cold_wind_large.setSelected(false);
-                    break;
-                case "3":
-                    cb_cold_wind_small.setSelected(true);
-                    cb_cold_wind_mid.setSelected(true);
-                    break;
-                default:
-                    break;
+                } else if ("2".equals(wind_speed)) {
+                    coldWindView2();
+                } else if ("3".equals(wind_speed)) {
+                    coldWindViewSelect(true);
+                }
+            } else if ("3".equals(wind_name_position)) {//新风
+                sendBTMsg(mOrderUtils.getXFOrder(selected, Integer.valueOf(wind_speed)));
+                newWindViewSelect(false);
+                if ("1".equals(wind_speed)) {
+                    cb_new_wind_small.setSelected(true);
+                } else if ("2".equals(wind_speed)) {
+                    newWindViewSelect(true);
+                }
 
+            } else if ("4".equals(wind_name_position)) {//暖风
+                sendBTMsg(mOrderUtils.getNFOrder(selected, Integer.valueOf(wind_speed)));
+                warmWindViewSelect(false);
+                if ("1".equals(wind_speed)) {
+                    cb_warm_wind_small.setSelected(true);
+                } else if ("2".equals(wind_speed)) {
+                    warmWindView2();
+                } else if ("3".equals(wind_speed)) {
+                    warmWindViewSelect(true);
+                }
             }
-
-
         }
+    }
+
+    public void refreshElectricState(String msg) {
+        char openState = '1';//开
+        char[] rankState = {'0', '1', '2', '3', '4'};//档位
+        cb_electric_coffee.setSelected(openState == msg.charAt(0));
+        cb_electric_refrigerator.setSelected(openState == msg.charAt(1));
+        cb_electric_audio.setSelected(openState == msg.charAt(2));
+        cb_electric_table.setSelected(openState == msg.charAt(3));
+        cb_lighting_bar.setSelected(openState == msg.charAt(4));
+        cb_lighting_front.setSelected(openState == msg.charAt(5));
+        cb_lighting_rear.setSelected(openState == msg.charAt(6));
+        cb_lighting_read_one.setSelected(openState == msg.charAt(7));
+        cb_lighting_read_two.setSelected(openState == msg.charAt(8));
+        cb_electric_door.setSelected(openState == msg.charAt(9));
+        cb_environment_smoke.setSelected(openState == msg.charAt(10));
+        smokeWindViewSelected(openState == msg.charAt(10));
+        cb_environment_new_wind.setSelected(openState == msg.charAt(11));
+        if (openState == msg.charAt(11)) {
+            if (msg.charAt(12) == rankState[1]) cb_new_wind_small.setSelected(true);
+            else newWindViewSelect(true);
+        }
+        cb_environment_cold.setSelected(msg.charAt(13) == openState);
+        if (msg.charAt(13) == openState) {
+            if (msg.charAt(14) == rankState[1]) cb_cold_wind_small.setSelected(true);
+            else if (msg.charAt(14) == rankState[2]) coldWindView2();
+            else coldWindViewSelect(true);
+        }
+        cb_environment_warm_wind.setSelected(msg.charAt(15) == '1');
+        if (msg.charAt(15) == '1') {
+            if (msg.charAt(16) == rankState[1]) cb_warm_wind_small.setSelected(true);
+            else if (msg.charAt(16) == rankState[2]) warmWindView2();
+            else warmWindViewSelect(true);
+        }
+        cb_lighting_top_atmosphere.setSelected(msg.charAt(17) == openState);
+        cb_lighting_mid_atmosphere.setSelected(msg.charAt(18) == openState);
+        cb_lighting_down_atmosphere.setSelected(msg.charAt(19) == openState);
+        cb_lighting_mbhtop.setSelected(msg.charAt(20) == openState);
+
+
     }
 // TODO: 2018/5/16 添加动态显示蓝牙图标
 
