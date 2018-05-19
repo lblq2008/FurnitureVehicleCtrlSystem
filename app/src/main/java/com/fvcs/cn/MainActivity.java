@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_main_electric:
                 hiddenRLViews();
-                sendBTMsg(mOrderUtils.getCFJOrder(true));
+                //sendBTMsg(mOrderUtils.getCFJOrder(true));
                 rl_dq.setVisibility(View.VISIBLE);
                 btn_dq.setSelected(true);
                 break;
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 hiddenRLViews();
                 rl_hj.setVisibility(View.VISIBLE);
                 btn_hj.setSelected(true);
-                sendBTMsg(mOrderUtils.getCFJOrder(false));
+                //sendBTMsg(mOrderUtils.getCFJOrder(false));
                 break;
             default:
                 break;
