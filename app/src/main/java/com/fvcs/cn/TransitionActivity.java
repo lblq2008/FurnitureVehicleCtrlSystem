@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.fvcs.cn.utils.PopViewUtils;
 import com.fvcs.cn.utils.PreferenceUtils;
 
 /**
@@ -26,6 +27,7 @@ public class TransitionActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
         setContentView(R.layout.activity_transition);
         PreferenceUtils.init(this);
+        PopViewUtils.init(this);
         initViews();
     }
 

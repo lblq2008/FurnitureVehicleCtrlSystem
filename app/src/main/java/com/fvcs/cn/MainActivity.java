@@ -33,6 +33,7 @@ import android.widget.TextView;
 import com.fvcs.cn.utils.AccpetBluetoothMsgThread;
 import com.fvcs.cn.utils.LogUtil;
 import com.fvcs.cn.utils.OrderUtils;
+import com.fvcs.cn.utils.PopViewUtils;
 import com.fvcs.cn.utils.PreferenceUtils;
 import com.fvcs.cn.utils.ToastUtils;
 
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (msg.what) {
                 case 0://连接成功
                     //ToastUtils.showToast(MainActivity.this,"连接成功");
+                    bluetoothConnected(null);
                     break;
                 case 1://连接失败
                     bluetoothDisConnected(null);
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // 创建PopupWindow对象，其中：
             // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
             // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点
-            pw = new PopupWindow(contentView, 700, 470, true);
+            pw = new PopupWindow(contentView, 960, 600, true);
             // 设置PopupWindow的背景
             pw.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             // 设置PopupWindow是否能响应外部点击事件
@@ -199,6 +201,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_blue = (ImageButton) findViewById(R.id.btn_blue);
         btn_blue.setOnClickListener(this);
 //        btn_blue.setText("未连接");
+
+        btn_blue.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                PopViewUtils.getInstance().showSetTimeInfo(v);
+                return false;
+            }
+        });
 
         rl_dg = (RelativeLayout) findViewById(R.id.rl_main_lighting);
         rl_dq = (RelativeLayout) findViewById(R.id.rl_main_electric);
@@ -393,11 +403,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 蓝牙连接成功处理
      */
     private void bluetoothConnected(BluetoothDevice device) {
-        LogUtil.e(TAG, device.getName() + " : " + device.getAddress() + "-->已连接");
-        //stopScanBlue();
-        PreferenceUtils.getInstance().saveBTName(device.getName() + "");
-        PreferenceUtils.getInstance().saveBTAddress(device.getAddress());
-        dissmissPW();
+       if(device != null){
+           LogUtil.e(TAG, device.getName() + " : " + device.getAddress() + "-->已连接");
+           //stopScanBlue();
+           PreferenceUtils.getInstance().saveBTName(device.getName() + "");
+           PreferenceUtils.getInstance().saveBTAddress(device.getAddress());
+           dissmissPW();
+       }
 //        btn_blue.setText(device.getName() + "\n已连接");
         btn_blue.setSelected(true);
     }
@@ -651,7 +663,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public class AtmosphereChaneListener implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            sendBTMsg(mOrderUtils.getRGBLightOrder(Integer.parseInt(buttonView.getContentDescription().toString()), isChecked, 2, 1, "red"));
+            sendBTMsg(mOrderUtils.getRGBLightOrder(Integer.parseInt(buttonView.getContentDescription().toString()), isChecked,  1, "red"));
             LogUtil.e(TAG, "getRGBLightOrder" + (Integer.parseInt(buttonView.getContentDescription().toString()) + "----->" + isChecked));
         }
     }
