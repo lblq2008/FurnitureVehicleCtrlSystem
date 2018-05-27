@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    signingConfigs {
+        FurnitureVehicleCtrlSystem {
+            keyAlias 'FurnitureVehicleCtrlSystem'
+            keyPassword 'furnituresystem2018'
+            storeFile file('F:/EggWorkSpace/FurnitureVehicleCtrlSystem.jks')
+            storePassword 'furnituresystem2018'
+        }
+    }
+
     compileSdkVersion 25
     buildToolsVersion "27.0.3"
     defaultConfig {
@@ -15,6 +25,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.FurnitureVehicleCtrlSystem
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.FurnitureVehicleCtrlSystem
         }
     }
 }

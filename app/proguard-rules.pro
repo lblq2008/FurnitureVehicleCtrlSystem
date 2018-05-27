@@ -15,3 +15,16 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# 不混淆第三方引用的库
+-dontskipnonpubliclibraryclasses
+# 不做预校验
+-dontpreverify
+# 忽略警告
+-ignorewarning
+
+#指定代码的压缩级别
+-optimizationpasses 5
+
+-dontusemixedcaseclassnames
+-verbose
