@@ -1,5 +1,6 @@
 package com.fvcs.cn.utils;
 
+import android.graphics.Color;
 import android.text.TextUtils;
 
 /**
@@ -11,7 +12,16 @@ public class OrderUtils {
 
     public byte SOH = 0x78 ;
     public byte[] EOH = {0x0d,0x0a};
-    public byte TIME = 0x05 ;
+    public static byte TIME = 0x05 ;
+
+    public static void setKeepTime(){
+        int t = PreferenceUtils.getInstance().getIntValue("clickKeepTime");
+        if(t == 0){
+            TIME = 0x05;
+        }else{
+            TIME = (byte) t;
+        }
+    }
 
 
     OnBottomMachineOrderListener listener ;
@@ -96,11 +106,11 @@ public class OrderUtils {
         return getShuangLuCtrl(no,state,TIME) ;
     }
 
-    public byte[] CTNos = {0x01,0x02,0x03,0x04,0x05,0x06,0x07};
+    public byte[] CTNos = {0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
     /**
      * 窗帘的命令
      * true 升    false 降
-     * pos 0：全体 1：前左  2：前右  3：中左  4：中右  5：后左  6：后右
+     * pos 0：全体 1：前左  2：前右  3：中左  4：中右  5：后左  6：后右  7:电视机
      * @param open
      */
     public byte[] getCLOrder(int pos ,boolean open){
@@ -169,23 +179,31 @@ public class OrderUtils {
         return getSiLuCtrl(no,state,md,colors);
     }
 
-
     public byte[] getByteColor(int mode ,String color){
+        int c = Integer.parseInt(color);
         byte[] colors = new byte[3];
-        switch (mode){
-            case 1:
-                colors = new byte[]{0x15, (byte) 0xc5, (byte) 0xb4};
-                break;
-            case 2:
-                colors = new byte[]{0x00, (byte) 0xff, (byte) 0xaa};
-                break;
-            case 3:
-                colors = new byte[]{0x15, (byte) 0xc5, (byte) 0xb4};
-                break;
-
-        }
+        colors[0] = (byte)Color.red(c);
+        colors[1] = (byte)Color.green(c);
+        colors[2] = (byte)Color.blue(c);
         return colors;
     }
+
+//    public byte[] getByteColor(int mode ,String color){
+//        byte[] colors = new byte[3];
+//        switch (mode){
+//            case 1:
+//                colors = new byte[]{0x15, (byte) 0xc5, (byte) 0xb4};
+//                break;
+//            case 2:
+//                colors = new byte[]{0x00, (byte) 0xff, (byte) 0xaa};
+//                break;
+//            case 3:
+//                colors = new byte[]{0x15, (byte) 0xc5, (byte) 0xb4};
+//                break;
+//
+//        }
+//        return colors;
+//    }
 
 
     /**

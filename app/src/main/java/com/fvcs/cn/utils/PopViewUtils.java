@@ -89,6 +89,7 @@ public class PopViewUtils {
 						ToastUtils.showToast(context,"时间不能为空值");
 					}else{
 						PreferenceUtils.getInstance().saveIntValue("clickKeepTime",Integer.parseInt(time));
+						OrderUtils.setKeepTime();
 						ToastUtils.showToast(context,"设置点击时长为 " + time + " 秒");
 						disSetTimeInfo();
 					}

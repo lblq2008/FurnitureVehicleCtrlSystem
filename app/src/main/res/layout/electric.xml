@@ -284,13 +284,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
+
         android:gravity="center_horizontal">
 
         <CheckBox
             android:id="@+id/cb_electric_coffee"
             style="@style/ElectricCheckboxStyle"
             android:layout_marginBottom="20dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="20dp"
             android:contentDescription="1"
             android:drawableTop="@drawable/electric_coffee_drawable_selector"
             android:text="咖啡机" />
@@ -301,7 +302,49 @@
             android:layout_marginBottom="20dp"
             android:layout_toRightOf="@id/cb_electric_coffee"
             android:drawableTop="@drawable/electric_tv_drawable_selector"
+            android:visibility="gone"
             android:text="电视机" />
+
+        <RelativeLayout
+            android:id="@+id/rl_electric_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cb_electric_coffee"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_tv"
+                style="@style/ElectricUpdownMidStyle" />
+
+            <CheckBox
+                android:id="@+id/cb_tv"
+                style="@style/ElectricCheckboxStyle"
+                android:layout_centerInParent="true"
+
+                android:background="@drawable/electric_tv_drawable_selector"
+                android:enabled="false"
+                 />
+
+            <ImageButton
+                android:id="@+id/ib_electric_tv_up"
+                style="@style/ElectricUpStyle"
+                android:layout_toLeftOf="@id/iv_tv"
+                android:contentDescription="7-1"
+                android:onClick="electricCurtain" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_tv_down"
+                style="@style/ElectricDownStyle"
+                android:layout_toRightOf="@id/iv_tv"
+                android:contentDescription="7-2"
+                android:onClick="electricCurtain" />
+        </RelativeLayout>
 
         <CheckBox
             android:id="@+id/cb_electric_refrigerator"
@@ -316,7 +359,7 @@
         <CheckBox
             android:id="@+id/cb_electric_audio"
             style="@style/ElectricCheckboxStyle"
-            android:layout_below="@id/cb_electric_tv"
+            android:layout_below="@id/cb_electric_coffee"
             android:layout_marginBottom="20dp"
             android:layout_toRightOf="@id/cb_electric_refrigerator"
             android:contentDescription="3"

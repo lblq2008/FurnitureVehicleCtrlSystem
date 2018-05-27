@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerReceiver(receiver, filter);
         initTabViews();
         mOrderUtils = new OrderUtils();
+        OrderUtils.setKeepTime();
         mOrderUtils.setListener(new OrderUtils.OnBottomMachineOrderListener() {
             @Override
             public void onDealReceiceMsg(String msg) {
@@ -663,7 +664,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public class AtmosphereChaneListener implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            sendBTMsg(mOrderUtils.getRGBLightOrder(Integer.parseInt(buttonView.getContentDescription().toString()), isChecked,  1, "red"));
+            String color = "0";
+
+            int upColor = PreferenceUtils.getInstance().getIntValue("up_fw_light") ;
+            int downColor = PreferenceUtils.getInstance().getIntValue("down_fw_light") ;
+            int middleColor = PreferenceUtils.getInstance().getIntValue("middle_fw_light") ;
+            //int allColor = PreferenceUtils.getInstance().getIntValue("all_fw_light") ;
+
+            switch (buttonView.getId()){
+                case R.id.cb_lighting_top_atmosphere:
+                    color = upColor + "" ;
+                    break;
+                case R.id.cb_lighting_mid_atmosphere:
+                    color = middleColor + "" ;
+                    break;
+                case R.id.cb_lighting_down_atmosphere:
+                    color = downColor + "" ;
+                    break;
+            }
+
+            sendBTMsg(mOrderUtils.getRGBLightOrder(Integer.parseInt(buttonView.getContentDescription().toString()), isChecked,  1, color));
             LogUtil.e(TAG, "getRGBLightOrder" + (Integer.parseInt(buttonView.getContentDescription().toString()) + "----->" + isChecked));
         }
     }
@@ -801,4 +821,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 // TODO: 2018/5/16 添加动态显示蓝牙图标
 
+    public void setAtmosphereMode(View v){
+        //ToastUtils.showToast(this,"设置氛围灯");
+        startActivityForResult(new Intent(this,AtmosphereLightActivity.class),1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case 1:
+                    dealAtmospherelight();
+                    break;
+            }
+        }
+    }
+
+    public void dealAtmospherelight(){
+        int mode = PreferenceUtils.getInstance().getIntValue("atmosLightMode");
+       // if(mode==0) mode=1;
+        switch (mode){
+            case 0:
+                break;
+            case 1:
+                sendBTMsg(mOrderUtils.getRGBLightOrder(1,cb_lighting_top_atmosphere.isChecked(),1,PreferenceUtils.getInstance().getIntValue("up_fw_light")+""));
+                sendBTMsg(mOrderUtils.getRGBLightOrder(2,cb_lighting_mid_atmosphere.isChecked(),1,PreferenceUtils.getInstance().getIntValue("middle_fw_light")+""));
+                sendBTMsg(mOrderUtils.getRGBLightOrder(3,cb_lighting_down_atmosphere.isChecked(),1,PreferenceUtils.getInstance().getIntValue("down_fw_light")+""));
+                break;
+            case 2:
+                sendBTMsg(mOrderUtils.getRGBLightOrder(0,true,2,PreferenceUtils.getInstance().getIntValue("all_fw_light")+""));
+                break;
+            case 3:
+                sendBTMsg(mOrderUtils.getRGBLightOrder(0,true,3,PreferenceUtils.getInstance().getIntValue("all_fw_light")+""));
+                break;
+        }
+    }
 }

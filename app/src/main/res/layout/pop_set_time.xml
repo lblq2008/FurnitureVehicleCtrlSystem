@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/popup_window"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -41,7 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+
             android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:background="@color/color_back"
             android:text="确定"/>
 
         <LinearLayout
@@ -77,6 +81,8 @@
             android:layout_marginTop="20dp"
             android:textSize="20sp"
             android:visibility="gone"
+            android:textColor="#ffffff"
+            android:background="@color/color_back"
             android:text="确定"/>
     </LinearLayout>
 </LinearLayout>
