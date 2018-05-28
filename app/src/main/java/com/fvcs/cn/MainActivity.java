@@ -469,6 +469,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (abmThread != null) {
             LogUtil.e(TAG, "sendBTMsg------->" + new String(msg));
             abmThread.sendBTMsgBytes(msg);
+        }else{
+            ToastUtils.showToast(this,"请先用蓝牙连接车载系统");
         }
     }
 

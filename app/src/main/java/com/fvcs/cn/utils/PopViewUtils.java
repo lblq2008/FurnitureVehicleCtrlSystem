@@ -65,6 +65,9 @@ public class PopViewUtils {
 			final EditText et_time = (EditText)layoutView.findViewById(R.id.et_time);
 			final Button tv_unlock = (Button)layoutView.findViewById(R.id.btn_unlock);
 			final Button btn_sure = (Button)layoutView.findViewById(R.id.btn_sure);
+
+			et_time.setText(PreferenceUtils.getInstance().getIntValue("clickKeepTime")+"");
+
 			tv_unlock.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
