@@ -389,11 +389,11 @@ public class OrderUtils {
      * @return
      */
     public byte getHexCheck(byte[] ord){
-        int sum = 0 ;
+        int sum = 0x00 ;
         for (int i = 1; i <ord.length-3 ; i++) {
             sum = sum + ord[i];
         }
-        sum = sum % 0xff;
+        sum = sum % 0x100;
         return (byte)sum;
     }
 }
