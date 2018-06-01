@@ -35,12 +35,22 @@ public class PopViewUtils {
 		}
 		return instance ;
 	}
+
 	
 	public void showSetTimeInfo(View v){
+
 		if(setTimeInfo == null){
+
+			int width = AppUtils.getScreenWidth(context)[0] ;
+			int wid = (width == 1920)? 640:(width/2);
+			int hei = AppUtils.dp2px(context,200);
+
+			LogUtil.e("TAG","-wid-->" + wid + " ,-hei-->" + hei);
+
 			View layoutView = View.inflate(context, R.layout.pop_set_time, null);
 			// TODO: 2016/5/17 创建PopupWindow对象，指定宽度和高度
-            setTimeInfo = new PopupWindow(layoutView, 640, 400);
+//            setTimeInfo = new PopupWindow(layoutView, 640, 400);
+			setTimeInfo = new PopupWindow(layoutView, wid, hei);
             // TODO: 2016/5/17 设置动画
             //window.setAnimationStyle(R.style.popup_window_anim);
             // TODO: 2016/5/17 设置背景颜色

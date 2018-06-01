@@ -6,7 +6,7 @@ android {
         FurnitureVehicleCtrlSystem {
             keyAlias 'FurnitureVehicleCtrlSystem'
             keyPassword 'furnituresystem2018'
-            storeFile file('F:/EggWorkSpace/FurnitureVehicleCtrlSystem.jks')
+            storeFile file('C:/AndroidInfo/FurnitureVehicleCtrlSystem.jks')
             storePassword 'furnituresystem2018'
         }
     }

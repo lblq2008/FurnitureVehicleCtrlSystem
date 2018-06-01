@@ -31,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fvcs.cn.utils.AccpetBluetoothMsgThread;
+import com.fvcs.cn.utils.AppUtils;
 import com.fvcs.cn.utils.LogUtil;
 import com.fvcs.cn.utils.OrderUtils;
 import com.fvcs.cn.utils.PopViewUtils;
@@ -42,7 +43,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -108,12 +108,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void showPW(View v) {
         if (pw == null) {
+
+            int width = AppUtils.getScreenWidth(this)[0] ;
+            int wid = (width == 1920)? 960:((int)(width*0.7));
+            int hei = AppUtils.dp2px(this,300);
+
             // 用于PopupWindow的View
             View contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.pop_blue_datas, null, false);
             // 创建PopupWindow对象，其中：
             // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
             // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点
-            pw = new PopupWindow(contentView, 960, 600, true);
+            pw = new PopupWindow(contentView, wid, hei, true);
             // 设置PopupWindow的背景
             pw.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             // 设置PopupWindow是否能响应外部点击事件
