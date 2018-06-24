@@ -728,7 +728,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     break;
                 case R.id.cb_environment_warm:
-                    sendBTMsg(mOrderUtils.getLFOrder(isChecked, 1));
+                    sendBTMsg(mOrderUtils.getNFOrder(isChecked, 1));
                     warmWindViewEnabled(isChecked);
                     warmWindViewSelect(false);
                     if (isChecked) {

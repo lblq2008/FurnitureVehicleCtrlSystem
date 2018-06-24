@@ -1,6 +1,8 @@
 package com.fvcs.cn.utils;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -57,10 +59,13 @@ public class PopViewUtils {
             //setTimeInfo.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F8F8F8")));
             // TODO: 2016/5/17 设置可以获取焦点
             setTimeInfo.setFocusable(true);
+			setTimeInfo.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             // TODO: 2016/5/17 设置可以触摸弹出框以外的区域
             setTimeInfo.setOutsideTouchable(true);
+			//setTimeInfo.setTouchable(true);
+
             // TODO：更新popupwindow的状态
-            setTimeInfo.update();
+            //setTimeInfo.update();
             setTimeInfo.setOnDismissListener(new OnDismissListener() {
 				
 				@Override
