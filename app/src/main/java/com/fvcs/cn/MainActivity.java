@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+    public String lastREceiveMsg = "" ;
+
     /**
      * 根据底层数据刷新页面
      *
@@ -97,8 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void dealReceiveMsg(String res) {
         if (TextUtils.isEmpty(res)) return;
-        ToastUtils.showToast(MainActivity.this, "收到数据: " + res);
-        mOrderUtils.dealReceiveMsg(res);
+        //ToastUtils.showToast(MainActivity.this, "收到数据: " + res);
+        if(!res.equals(lastREceiveMsg)){
+            mOrderUtils.dealReceiveMsg(res);
+            //ToastUtils.showToast(MainActivity.this, "收到数据: " + res);
+        }
+        lastREceiveMsg = res ;
     }
 
     /**
@@ -518,7 +524,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             cb_environment_smoke, cb_environment_cold, cb_environment_new_wind, cb_environment_warm_wind;
 
     public void initAppView() {
-
 
         //电器
         cb_electric_coffee = (CheckBox) findViewById(R.id.cb_electric_coffee);
