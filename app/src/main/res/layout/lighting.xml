@@ -26,7 +26,7 @@
             android:id="@+id/cb_lighting_top_atmosphere"
             style="@style/lightingCheckBoxStyle"
             android:layout_marginBottom="20dp"
-            android:contentDescription="1"
+            android:contentDescription="11"
             android:drawableTop="@drawable/lighting_top_atmosphere_drawable_selector"
             android:text="上氛围灯" />
 
@@ -37,7 +37,7 @@
             android:layout_below="@id/cb_lighting_top_atmosphere"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="30dp"
-            android:contentDescription="2"
+            android:contentDescription="12"
             android:drawableTop="@drawable/lighting_mid_atmosphere_drawable_selector"
             android:text="中氛围灯" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/cb_lighting_down_atmosphere"
             style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_mid_atmosphere"
-            android:contentDescription="3"
+            android:contentDescription="13"
             android:drawableTop="@drawable/lighting_down_atmosphere_drawable_selector"
             android:text="下氛围灯" />
 
@@ -54,7 +54,7 @@
             style="@style/lightingCheckBoxStyle"
             android:layout_below="@id/cb_lighting_top_atmosphere"
             android:layout_toRightOf="@id/cb_lighting_mid_atmosphere"
-            android:contentDescription="11"
+            android:contentDescription="4"
             android:drawableTop="@drawable/lighting_mbhtop_lamp_drawable_selector"
             android:text="迈巴赫顶灯" />
 
@@ -68,6 +68,16 @@
         android:contentDescription="5"
         android:drawableTop="@drawable/lighting_bar_lamp_drawable_selector"
         android:text="吧台灯" />
+
+    <CheckBox
+        android:id="@+id/cb_lighting_inverter"
+        style="@style/lightingCheckBoxStyle"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/rl_lighting_left"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="14"
+        android:drawableTop="@drawable/lighting_bar_lamp_drawable_selector"
+        android:text="逆变器" />
 
     <RelativeLayout
         android:id="@+id/rl_lighting_right"

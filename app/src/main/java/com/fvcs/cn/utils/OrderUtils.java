@@ -106,11 +106,12 @@ public class OrderUtils {
         return getShuangLuCtrl(no,state,TIME) ;
     }
 
-    public byte[] CTNos = {0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
+//    public byte[] CTNos = {0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
+public byte[] CTNos = {0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2A};
     /**
      * 窗帘的命令
      * true 升    false 降
-     * pos 0：全体 1：前左  2：前右  3：中左  4：中右  5：后左  6：后右  7:电视机
+     * pos 0：全体 1：前左  2：前右  3：中左  4：中右  5：后左  6：后右  7:电视机 8：小桌板  9:电冰箱前后
      * @param open
      */
     public byte[] getCLOrder(int pos ,boolean open){
@@ -120,21 +121,26 @@ public class OrderUtils {
     }
 
  //   * 0:顶灯  1：吧台灯  2：前射灯  3：后射灯  4：阅读灯一  5：阅读灯二
+//    0x11	咖啡机   1
+//    0x12	电冰箱   2
+//    0x13	影音娱乐  3
+//    0x14	迈巴赫顶灯  4
+//    0x15	吧台灯  5
+//    0x16	前射灯  6
+//    0x17	后射灯  7
+//    0x18	阅读灯一 8
+//    0x19	阅读灯二 9
+//    0x1a	电动门   10
+//    0x1b	上气氛灯  11
+//    0x1c	中气围灯  12
+//    0x1d	上气围灯  13
+//    0x1e	逆变器    14
 
-//    0x01	咖啡机
-//    0x02	电冰箱
-//    0x03	影音娱乐
-//    0x04	小桌板
-//    0x05	吧台灯
-//    0x06	前射灯
-//    0x07	后射灯
-//    0x08	阅读灯一
-//    0x09	阅读灯二
-//    0x0A	电动门
-//    0x0B	顶灯
 
-    public byte[] DLDevicesNo = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B};
-
+    //public byte[] DLDevicesNo = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B};
+    //                             0   1    2     3   4    5    6    7    8    9    10    11  12   13   14   15  16
+    public byte[] DLDevicesNo = {0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D,0x1E,0x2A,0x2B};
+    //                                咖啡机
     /**
      * 单路灯光的命令
      * @param open true 开    false 关
@@ -211,7 +217,7 @@ public class OrderUtils {
      * @param open  true 开    false 关
      */
     public byte[] getXYOrder(boolean open){
-        byte no = 0x01 ;
+        byte no = 0x31 ;
         byte state = (byte)(open?0x31:0x30);
         byte gear = 0x32 ;
         return getSanLuCtrl(no,state,gear);
@@ -225,7 +231,7 @@ public class OrderUtils {
      * @param open
      */
     public byte[] getXFOrder(boolean open , int gear){
-        byte no = 0x02 ;
+        byte no = 0x32 ;
         byte state = (byte)(open?0x31:0x30);
         return getSanLuCtrl(no,state,Gears[gear]);
     }
@@ -237,7 +243,7 @@ public class OrderUtils {
      * @param open
      */
     public byte[] getLFOrder(boolean open , int gear){
-        byte no = 0x03 ;
+        byte no = 0x33 ;
         byte state = (byte)(open?0x31:0x30);
         return getSanLuCtrl(no,state,Gears[gear]);
     }
@@ -249,7 +255,7 @@ public class OrderUtils {
      * @param open
      */
     public byte[] getNFOrder(boolean open , int gear){
-        byte no = 0x04 ;
+        byte no = 0x34 ;
         byte state = (byte)(open?0x31:0x30);
         return getSanLuCtrl(no,state,Gears[gear]);
     }

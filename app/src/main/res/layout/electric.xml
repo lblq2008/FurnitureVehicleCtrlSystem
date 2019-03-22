@@ -20,116 +20,6 @@
         android:src="@mipmap/background_right" />
 
 
-
-    <RelativeLayout
-        android:id="@+id/rl_electric_mid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-
-        android:gravity="center_horizontal">
-
-        <CheckBox
-            android:id="@+id/cb_electric_coffee"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:contentDescription="1"
-            android:drawableTop="@drawable/electric_coffee_drawable_selector"
-            android:text="咖啡机" />
-
-        <CheckBox
-            android:id="@+id/cb_electric_tv"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_marginBottom="20dp"
-            android:layout_toRightOf="@id/cb_electric_coffee"
-            android:drawableTop="@drawable/electric_tv_drawable_selector"
-            android:visibility="gone"
-            android:text="电视机" />
-
-        <RelativeLayout
-            android:id="@+id/rl_electric_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/cb_electric_coffee"
-            >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/curtain_bottom_heng" />
-
-            <ImageView
-                android:id="@+id/iv_tv"
-                style="@style/ElectricUpdownMidStyle" />
-
-            <CheckBox
-                android:id="@+id/cb_tv"
-                style="@style/ElectricCheckboxStyle"
-                android:layout_centerInParent="true"
-
-                android:background="@drawable/electric_tv_drawable_selector"
-                android:enabled="false"
-                 />
-
-            <ImageButton
-                android:id="@+id/ib_electric_tv_up"
-                style="@style/ElectricUpStyle"
-                android:layout_toLeftOf="@id/iv_tv"
-                android:contentDescription="7-1"
-                android:onClick="electricCurtain" />
-
-            <ImageButton
-                android:id="@+id/ib_electric_tv_down"
-                style="@style/ElectricDownStyle"
-                android:layout_toRightOf="@id/iv_tv"
-                android:contentDescription="7-2"
-                android:onClick="electricCurtain" />
-        </RelativeLayout>
-
-        <CheckBox
-            android:id="@+id/cb_electric_refrigerator"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_below="@id/cb_electric_coffee"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="50dp"
-            android:contentDescription="2"
-            android:drawableTop="@drawable/electric_refrigerator_drawable_selector"
-            android:text="电冰箱" />
-
-        <CheckBox
-            android:id="@+id/cb_electric_audio"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_below="@id/cb_electric_coffee"
-            android:layout_marginBottom="20dp"
-            android:layout_toRightOf="@id/cb_electric_refrigerator"
-            android:contentDescription="3"
-            android:drawableTop="@drawable/electric_audio_drawable_selector"
-            android:text="影音娱乐" />
-
-        <CheckBox
-            android:id="@+id/cb_electric_table"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_below="@id/cb_electric_refrigerator"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="50dp"
-            android:contentDescription="4"
-            android:drawableTop="@drawable/electric_table_drawable_selector"
-            android:text="小桌子" />
-
-        <CheckBox
-            android:id="@+id/cb_electric_door"
-            style="@style/ElectricCheckboxStyle"
-            android:layout_below="@id/cb_electric_audio"
-            android:layout_marginBottom="20dp"
-            android:layout_toRightOf="@id/cb_electric_table"
-            android:contentDescription="10"
-            android:drawableTop="@drawable/electric_door_drawable_selector"
-            android:text="电动舱门" />
-    </RelativeLayout>
-
     <RelativeLayout
         android:id="@+id/rl_curtain_left"
         android:layout_width="wrap_content"
@@ -431,6 +321,232 @@
             android:layout_toRightOf="@id/iv_all_curtain"
             android:contentDescription="0-2"
             android:onClick="electricCurtain" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_electric_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <CheckBox
+            android:id="@+id/cb_electric_coffee"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="1"
+            android:drawableTop="@drawable/electric_coffee_drawable_selector"
+            android:text="咖啡机" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_tv"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/cb_electric_coffee"
+            android:drawableTop="@drawable/electric_tv_drawable_selector"
+            android:visibility="gone"
+            android:text="电视机" />
+
+        <RelativeLayout
+            android:id="@+id/rl_electric_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cb_electric_coffee"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_tv"
+                style="@style/ElectricUpdownMidStyle" />
+
+            <CheckBox
+                android:id="@+id/cb_tv"
+                style="@style/ElectricCheckboxStyle"
+                android:layout_centerInParent="true"
+
+                android:background="@drawable/electric_tv_drawable_selector"
+                android:enabled="false"
+                 />
+
+            <ImageButton
+                android:id="@+id/ib_electric_tv_up"
+                style="@style/ElectricUpStyle"
+                android:layout_toLeftOf="@id/iv_tv"
+                android:contentDescription="7-1"
+                android:onClick="electricCurtain" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_tv_down"
+                style="@style/ElectricDownStyle"
+                android:layout_toRightOf="@id/iv_tv"
+                android:contentDescription="7-2"
+                android:onClick="electricCurtain" />
+        </RelativeLayout>
+
+
+
+        <CheckBox
+            android:id="@+id/cb_electric_audio"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_below="@id/cb_electric_coffee"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="3"
+            android:drawableTop="@drawable/electric_audio_drawable_selector"
+            android:text="影音娱乐" />
+
+
+        <CheckBox
+            android:id="@+id/cb_electric_refrigerator1"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_below="@id/cb_electric_coffee"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/cb_electric_audio"
+            android:contentDescription="2"
+            android:visibility="gone"
+            android:drawableTop="@drawable/electric_refrigerator_drawable_selector"
+            android:text="电冰箱" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_electric_refrigerator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/cb_electric_coffee"
+            android:layout_toRightOf="@id/cb_electric_audio"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_refrigerator"
+                style="@style/ElectricUpdownMidStyle" />
+
+            <CheckBox
+                android:id="@+id/cb_electric_refrigerator"
+                style="@style/ElectricCheckboxStyle"
+                android:layout_centerInParent="true"
+                android:contentDescription="2"
+                android:background="@drawable/electric_refrigerator_drawable_selector"
+                android:enabled="true"
+                />
+
+            <CheckBox
+            android:id="@+id/ib_electric_refrigerator_up"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_toLeftOf="@id/iv_refrigerator"
+            android:contentDescription="15"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:button="@drawable/electric_circle_up_drawable_selector"
+             />
+
+            <CheckBox
+                android:id="@+id/ib_electric_refrigerator_down"
+                style="@style/ElectricCheckboxStyle"
+                android:layout_toRightOf="@id/iv_refrigerator"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:contentDescription="16"
+                android:button="@drawable/electric_circle_down_drawable_selector" />
+
+            <!--
+            <ImageButton
+                android:id="@+id/ib_electric_refrigerator_up"
+                style="@style/ElectricUpStyle"
+                android:layout_toLeftOf="@id/iv_refrigerator"
+                android:contentDescription="15"
+                android:onClick="electricCurtain" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_refrigerator_down"
+                style="@style/ElectricDownStyle"
+                android:layout_toRightOf="@id/iv_refrigerator"
+                android:contentDescription="16"
+                android:onClick="electricCurtain" />
+
+            -->
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/cb_electric_door"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_below="@id/cb_electric_audio"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="50dp"
+            android:contentDescription="10"
+            android:drawableTop="@drawable/electric_door_drawable_selector"
+            android:text="电动舱门" />
+
+        <CheckBox
+            android:id="@+id/cb_electric_table"
+            style="@style/ElectricCheckboxStyle"
+            android:layout_below="@id/rl_electric_refrigerator"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:layout_toRightOf="@id/cb_electric_door"
+            android:contentDescription="4"
+            android:drawableTop="@drawable/electric_table_drawable_selector"
+            android:text="小桌子" />
+
+        <RelativeLayout
+            android:id="@+id/rl_electric_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_electric_refrigerator"
+            android:layout_toRightOf="@id/cb_electric_audio"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/curtain_bottom_heng" />
+
+            <ImageView
+                android:id="@+id/iv_table"
+                style="@style/ElectricUpdownMidStyle" />
+
+            <CheckBox
+                android:id="@+id/cb_table"
+                style="@style/ElectricCheckboxStyle"
+                android:layout_centerInParent="true"
+
+                android:background="@drawable/electric_table_drawable_selector"
+                android:enabled="false"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_electric_table_up"
+                style="@style/ElectricUpStyle"
+                android:layout_toLeftOf="@id/iv_table"
+                android:contentDescription="8-1"
+                android:onClick="electricCurtain" />
+
+            <ImageButton
+                android:id="@+id/ib_electric_table_down"
+                style="@style/ElectricDownStyle"
+                android:layout_toRightOf="@id/iv_table"
+                android:contentDescription="8-2"
+                android:onClick="electricCurtain" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

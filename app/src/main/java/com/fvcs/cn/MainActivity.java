@@ -521,9 +521,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CheckBox cb_electric_coffee, cb_electric_refrigerator, cb_electric_audio, cb_electric_table, cb_electric_door,
             cb_lighting_mbhtop, cb_lighting_bar, cb_lighting_front, cb_lighting_read_one, cb_lighting_read_two, cb_lighting_rear,
             cb_lighting_top_atmosphere, cb_lighting_mid_atmosphere, cb_lighting_down_atmosphere,
-            cb_environment_smoke, cb_environment_cold, cb_environment_new_wind, cb_environment_warm_wind;
+            cb_environment_smoke, cb_environment_cold, cb_environment_new_wind, cb_environment_warm_wind,cb_lighting_inverter;
+
+    private CheckBox ib_electric_refrigerator_down,ib_electric_refrigerator_up;
 
     public void initAppView() {
+        ib_electric_refrigerator_down = (CheckBox) findViewById(R.id.ib_electric_refrigerator_down);
+        ib_electric_refrigerator_down.setOnCheckedChangeListener(this);
+        ib_electric_refrigerator_up = (CheckBox) findViewById(R.id.ib_electric_refrigerator_up);
+        ib_electric_refrigerator_up.setOnCheckedChangeListener(this);
 
         //电器
         cb_electric_coffee = (CheckBox) findViewById(R.id.cb_electric_coffee);
@@ -533,9 +539,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_electric_audio = (CheckBox) findViewById(R.id.cb_electric_audio);
         cb_electric_audio.setOnCheckedChangeListener(this);
         cb_electric_table = (CheckBox) findViewById(R.id.cb_electric_table);
-        cb_electric_table.setOnCheckedChangeListener(this);
+        //cb_electric_table.setOnCheckedChangeListener(this);
         cb_electric_door = (CheckBox) findViewById(R.id.cb_electric_door);
         cb_electric_door.setOnCheckedChangeListener(this);
+
         //灯光
         cb_lighting_mbhtop = (CheckBox) findViewById(R.id.cb_lighting_mbhtop);
         cb_lighting_mbhtop.setOnCheckedChangeListener(this);
@@ -550,15 +557,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cb_lighting_rear = (CheckBox) findViewById(R.id.cb_lighting_rear);
         cb_lighting_rear.setOnCheckedChangeListener(this);
 
+        cb_lighting_inverter = (CheckBox) findViewById(R.id.cb_lighting_inverter);
+        cb_lighting_inverter.setOnCheckedChangeListener(this);
+
         mAtmosphereChaneListener = new AtmosphereChaneListener();
 
         //氛围灯
         cb_lighting_top_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_top_atmosphere);
-        cb_lighting_top_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+//        cb_lighting_top_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_top_atmosphere.setOnCheckedChangeListener(this);
         cb_lighting_mid_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_mid_atmosphere);
-        cb_lighting_mid_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+//        cb_lighting_mid_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_mid_atmosphere.setOnCheckedChangeListener(this);
         cb_lighting_down_atmosphere = (CheckBox) findViewById(R.id.cb_lighting_down_atmosphere);
-        cb_lighting_down_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+//        cb_lighting_down_atmosphere.setOnCheckedChangeListener(mAtmosphereChaneListener);
+        cb_lighting_down_atmosphere.setOnCheckedChangeListener(this);
 
         mHJChangeListener = new HJChangeListener();
         //环境风
@@ -747,6 +760,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // }
     }
 
+    /**
+     * 冷风
+     */
     public void coldWind(View view) {
 //        view.setSelected(!view.isSelected());
         view.setSelected(true);
@@ -792,42 +808,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+//                           3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25
+//    起始符	功能码	长度  咖啡机	电冰箱	影音娱乐	迈巴赫顶灯	吧台灯	前射灯	后射灯	阅读灯一	阅读灯二	电动门	吸烟系统	新风系统	新风档位	冷风系统	冷风档位	暖风系统	暖风档位	上气氛灯	中气氛灯	下气氛灯	逆变器	校验和	终止符
+//    77	32	14	        30	31	31	31	30	31	31	31	31	31	31	30	31	31	31	31	31	30	30	30	30		0d0a
+//                          0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	20
+
+
     public void refreshElectricState(String msg) {
         char openState = '1';//开
         char[] rankState = {'0', '1', '2', '3', '4'};//档位
-        cb_electric_coffee.setSelected(openState == msg.charAt(0));
-        cb_electric_refrigerator.setSelected(openState == msg.charAt(1));
-        cb_electric_audio.setSelected(openState == msg.charAt(2));
-        cb_electric_table.setSelected(openState == msg.charAt(3));
-        cb_lighting_bar.setSelected(openState == msg.charAt(4));
-        cb_lighting_front.setSelected(openState == msg.charAt(5));
-        cb_lighting_rear.setSelected(openState == msg.charAt(6));
-        cb_lighting_read_one.setSelected(openState == msg.charAt(7));
-        cb_lighting_read_two.setSelected(openState == msg.charAt(8));
-        cb_electric_door.setSelected(openState == msg.charAt(9));
-        cb_environment_smoke.setSelected(openState == msg.charAt(10));
-        smokeWindViewSelected(openState == msg.charAt(10));
-        cb_environment_new_wind.setSelected(openState == msg.charAt(11));
-        if (openState == msg.charAt(11)) {
+        cb_electric_coffee.setSelected(openState == msg.charAt(0));//咖啡机
+        cb_electric_refrigerator.setSelected(openState == msg.charAt(1));//电冰箱
+        cb_electric_audio.setSelected(openState == msg.charAt(2));//影音娱乐
+//        cb_electric_table.setSelected(openState == msg.charAt(3));//迈巴赫顶灯
+        cb_lighting_mbhtop.setSelected(openState == msg.charAt(3));//迈巴赫顶灯
+        cb_lighting_bar.setSelected(openState == msg.charAt(4));//吧台灯
+        cb_lighting_front.setSelected(openState == msg.charAt(5));//前射灯
+        cb_lighting_rear.setSelected(openState == msg.charAt(6));//后射灯
+        cb_lighting_read_one.setSelected(openState == msg.charAt(7));//阅读灯一
+        cb_lighting_read_two.setSelected(openState == msg.charAt(8));//阅读灯二
+        cb_electric_door.setSelected(openState == msg.charAt(9));//电动门
+        cb_environment_smoke.setSelected(openState == msg.charAt(10));//吸烟系统
+        smokeWindViewSelected(openState == msg.charAt(10));//
+
+        //11:新风系统  12:新风档位
+        cb_environment_new_wind.setSelected(openState == msg.charAt(11));//新风系统
+        if (openState == msg.charAt(11)) {  //12:新风档位
             if (msg.charAt(12) == rankState[1]) cb_new_wind_small.setSelected(true);
             else newWindViewSelect(true);
         }
+        //13:冷风系统  14:冷风档位
         cb_environment_cold.setSelected(msg.charAt(13) == openState);
         if (msg.charAt(13) == openState) {
             if (msg.charAt(14) == rankState[1]) cb_cold_wind_small.setSelected(true);
             else if (msg.charAt(14) == rankState[2]) coldWindView2();
             else coldWindViewSelect(true);
         }
+
+        //13:暖风系统  14:暖风档位
         cb_environment_warm_wind.setSelected(msg.charAt(15) == '1');
         if (msg.charAt(15) == '1') {
             if (msg.charAt(16) == rankState[1]) cb_warm_wind_small.setSelected(true);
             else if (msg.charAt(16) == rankState[2]) warmWindView2();
             else warmWindViewSelect(true);
         }
-        cb_lighting_top_atmosphere.setSelected(msg.charAt(17) == openState);
-        cb_lighting_mid_atmosphere.setSelected(msg.charAt(18) == openState);
-        cb_lighting_down_atmosphere.setSelected(msg.charAt(19) == openState);
-        cb_lighting_mbhtop.setSelected(msg.charAt(20) == openState);
+        cb_lighting_top_atmosphere.setSelected(msg.charAt(17) == openState);//上氛围灯
+        cb_lighting_mid_atmosphere.setSelected(msg.charAt(18) == openState);//中氛围灯
+        cb_lighting_down_atmosphere.setSelected(msg.charAt(19) == openState);//下氛围灯
+        cb_lighting_inverter.setSelected(msg.charAt(20) == openState);//逆变器
 
 
     }
@@ -835,7 +863,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setAtmosphereMode(View v){
         //ToastUtils.showToast(this,"设置氛围灯");
-        startActivityForResult(new Intent(this,AtmosphereLightActivity.class),1);
+        //startActivityForResult(new Intent(this,AtmosphereLightActivity.class),1);
     }
 
     @Override
